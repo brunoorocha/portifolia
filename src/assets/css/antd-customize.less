@@ -5,9 +5,9 @@ body {
   scroll-behavior: smooth;
 }
 
-h1:extend(.fw-900, .sm-fs-large) {
+h1:extend(.fw-700, .sm-fs-large) {
   color: @text-color;
-  margin-bottom: 0px;
+  margin-bottom: @smedium;
 }
 
 h2:extend(.fw-900, .sm-fs-slarge, .mb-medium) {
@@ -26,7 +26,7 @@ h5:extend(.fw-700, .fs-smedium, .mb-smedium, .tt-uppercase) {
   color: @text-color;
 }
 
-p:extend(.fs-medium, .fw-300) {
+p:extend(.fs-smedium, .fw-400) {
   color: @text-color;
 }
 
@@ -47,4 +47,25 @@ div.ant-select .ant-select-selection {
   .ant-select-arrow {
     margin-right: @xsmall;
   }
+}
+
+.ant-btn:extend(.fw-700) {
+  &.ant-btn-default {
+    background-color: @gray-100;
+    border: none;
+
+    &:hover {
+      background-color: @gray-200;
+      color: @text-color;
+    }
+  }
+  
+  &.ant-btn-ghost {
+    border-color: @gray-200;
+  
+    &:hover {
+      border-color: @gray-300;
+      color: @text-color;
+    }
+  }  
 }
