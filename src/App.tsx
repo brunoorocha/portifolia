@@ -1,7 +1,7 @@
 import React from 'react';
 import { HomePage } from './pages/home'
-import './assets/css/style.less';
 import { NavBar } from './components/navbar/NavBar';
+import './assets/css/style.less';
 
 
 const App: React.FC = () => {

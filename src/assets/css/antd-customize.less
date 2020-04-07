@@ -39,16 +39,6 @@ footer.ant-layout-footer {
   padding: 0;
 }
 
-div.ant-select .ant-select-selection {
-  height: @large;
-  padding: @small;
-  border-radius: @large / 2;
-
-  .ant-select-arrow {
-    margin-right: @xsmall;
-  }
-}
-
 .ant-layout-header.bg-color-white {
   background-color: @white;
   height: 80px;
@@ -103,4 +93,36 @@ div.ant-select .ant-select-selection {
 .ant-menu-sub > .ant-menu-item a {
   display: flex;
   align-items: center;
+}
+
+.d-select.ant-select {
+  .ant-select-selector {
+    border-color: @gray-200;
+    border-radius: @small;
+    height: @slarge;
+    display: flex;
+    align-items: center;
+    padding: 0 @smedium;
+
+    &:hover {
+      border-color: @gray-300;
+    }
+    
+    .ant-select-selection-search {
+      height: @slarge;
+    }
+  }
+
+  .ant-select-arrow {
+    top: 50%;
+    right: @smedium;
+  }
+}
+
+.ant-select-dropdown {
+  .ant-select-item-option-selected {
+    background-color: @white;
+    color: @pink-500;
+    font-weight: 500;
+  }
 }
