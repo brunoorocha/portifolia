@@ -37,9 +37,14 @@
   font-weight: 400;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   width: calc(100% - 40px);
-  max-width: 1160px;
+  max-width: @container-max-width;
   margin: 0 auto;
   box-sizing: border-box;
 }

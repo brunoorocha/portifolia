@@ -21,7 +21,7 @@ export const NavBar: React.FC = () => {
           >
             <Item key="1">Explore <ChevronDown className="f-icon f-icon-smedium" /></Item>
             <Item key="2">For Designers <ChevronDown className="f-icon f-icon-smedium" /></Item>
-            <Item key="3">Hiring Designers? <ChevronDown className="f-icon f-icon-smedium" /></Item>
+            <Item key="3">Hiring Designers?</Item>
           </Menu>
         </Col>
         <Col flex="auto" className="ta-right">
