@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { DibbbreLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
 
-export const SignIn: React.FC = () => {
+interface SignInProps {
+  signIn: (username: string, password: string) => void
+  isLoadingSignIn: boolean
+}
+
+export const SignIn: React.FC<SignInProps> = props => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const onFormFinish = () => {
+    props.signIn(username, password)
+  }
+
   return (
     <Row>
       <Col xs={0} sm={0} md={8} className="bg-color-yellow-100 h-100vh">
@@ -16,6 +28,7 @@ export const SignIn: React.FC = () => {
         </div>
         <img src="https://cdn.dribbble.com/assets/auth/sign-up-309e26707e1a09e0f27bdf7854df9e3dbdc45d4bbf99ef0d75dc2f3a3a0b4164.png" alt="" className="w-100per" />
       </Col>
+
       <Col flex="auto">
         <Row justify="end" className="pdt-lmedium pdr-lmedium">
           <p>Not a member? <Link to={routes.signUp}>Sign up now</Link></p>
@@ -23,14 +36,15 @@ export const SignIn: React.FC = () => {
 
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">
           <h3>Sign in to Dibbbre</h3>
-          <Form layout="vertical">
+          <Form layout="vertical" onFinish={onFormFinish}>
             <Row>
               <Col span={24}>
                 <Form.Item
-                  label="Email"
-                  name="email"
-                  rules={[{ required: true, message: 'Please input your email' }]}>
-                  <Input />
+                  label="Username"
+                  name="username"
+                  rules={[{ required: true, message: 'Please input your username' }]}
+                >
+                  <Input onChange={event => setUsername(event.target.value)} />
                 </Form.Item>
               </Col>
             </Row>
@@ -40,8 +54,9 @@ export const SignIn: React.FC = () => {
                 <Form.Item
                   label="Password"
                   name="password"
-                  rules={[{ required: true, message: 'Please input your password' }]}>
-                  <Input.Password />
+                  rules={[{ required: true, message: 'Please input your password' }]}
+                >
+                  <Input.Password onChange={event => setPassword(event.target.value)} />
                 </Form.Item>
               </Col>
             </Row>
@@ -49,7 +64,12 @@ export const SignIn: React.FC = () => {
             <Row>
               <Col span={24}>
                 <Form.Item>
-                  <PrimaryButton isSubmit={true}>Sign in</PrimaryButton>
+                  <PrimaryButton
+                    isSubmit={true}
+                    isLoading={props.isLoadingSignIn}
+                  >
+                    Sign in
+                  </PrimaryButton>
                 </Form.Item>
               </Col>
             </Row>

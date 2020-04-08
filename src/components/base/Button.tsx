@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: () => void
   id?: string
   isSubmit?: boolean
+  isLoading?: boolean
 }
 
 interface LinkButtonProps extends ButtonProps {
@@ -21,6 +22,7 @@ export const PrimaryButton: React.FC<ButtonProps> = props => (
     onClick={props.onClick}
     id={props.id}
     htmlType={props.isSubmit ? 'submit' : 'button' }
+    loading={props.isLoading}
   >
     { props.children }
   </AntdButton>
