@@ -29,7 +29,7 @@ export const NavBar: React.FC = () => {
         </Col>
         <Col flex="auto">
           <div className="d-flex jc-end">
-            <LinkButton to="/sign-up" className="mr-small">Sign in</LinkButton>
+            <LinkButton to="/sign-in" className="mr-small">Sign in</LinkButton>
             <LinkButton to="/sign-up" type="primary">Sign up</LinkButton>
           </div>
         </Col>

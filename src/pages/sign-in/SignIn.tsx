@@ -3,7 +3,7 @@ import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { DibbbreLogo, PrimaryButton } from '../../components'
 
-export const SignUp: React.FC = () => {
+export const SignIn: React.FC = () => {
   return (
     <Row>
       <Col xs={0} sm={0} md={8} className="bg-color-yellow-100 h-100vh">
@@ -17,32 +17,12 @@ export const SignUp: React.FC = () => {
       </Col>
       <Col flex="auto">
         <Row justify="end" className="pdt-lmedium pdr-lmedium">
-          <p>Already a member? <Link to="/sign-in">Sign in</Link></p>
+          <p>Not a member? <Link to="/sign-up">Sign up now</Link></p>
         </Row>
 
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">
-          <h3>Sign up to Dibbbre</h3>
+          <h3>Sign in to Dibbbre</h3>
           <Form layout="vertical">
-            <Row gutter={[20, 0]}>
-              <Col xs={24} sm={12}>
-                <Form.Item
-                  label="Name"
-                  name="name"
-                  rules={[{ required: true, message: 'Please input your name' }]}>
-                  <Input />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} sm={12}>
-                <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={[{ required: true, message: 'Please input your username' }]}>
-                  <Input />
-                </Form.Item>
-              </Col>
-            </Row>
-
             <Row>
               <Col span={24}>
                 <Form.Item
@@ -68,7 +48,7 @@ export const SignUp: React.FC = () => {
             <Row>
               <Col span={24}>
                 <Form.Item>
-                  <PrimaryButton isSubmit={true}>Create Account</PrimaryButton>
+                  <PrimaryButton isSubmit={true}>Sign in</PrimaryButton>
                 </Form.Item>
               </Col>
             </Row>
