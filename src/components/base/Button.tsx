@@ -1,10 +1,16 @@
 import React from 'react'
 import { Button as AntdButton } from 'antd'
+import { Link } from 'react-router-dom'
 
 interface ButtonProps {
   className?: string
   onClick?: () => void
   id?: string
+}
+
+interface LinkButtonProps extends ButtonProps {
+  type?: 'primary' | 'default'
+  to?: string
 }
 
 export const PrimaryButton: React.FC<ButtonProps> = props => (
@@ -39,3 +45,18 @@ export const GhostButton: React.FC<ButtonProps> = props => (
     { props.children }
   </AntdButton>
 )
+
+export const LinkButton: React.FC<LinkButtonProps> = props => {
+  const type = props.type || 'default'
+  const classes = {
+    primary: `ant-btn ant-btn-primary br-small h-slarge fw-700 d-flex ${props.className}`,
+    default: `ant-btn ant-btn-default br-small h-slarge fw-700 d-flex ${props.className}`
+  }
+
+  return (
+    <Link style={{ padding: '4px 12px' }} to={props.to || ''} className={classes[type]}>
+      {props.children}
+    </Link>
+  )
+}
+
