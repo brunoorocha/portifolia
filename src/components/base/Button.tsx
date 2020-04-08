@@ -51,8 +51,8 @@ export const GhostButton: React.FC<ButtonProps> = props => (
 export const LinkButton: React.FC<LinkButtonProps> = props => {
   const type = props.type || 'default'
   const classes = {
-    primary: `ant-btn ant-btn-primary br-small h-slarge fw-700 d-flex ${props.className}`,
-    default: `ant-btn ant-btn-default br-small h-slarge fw-700 d-flex ${props.className}`
+    primary: `ant-btn ant-btn-primary br-small h-slarge fw-700 ${props.className}`,
+    default: `ant-btn ant-btn-default br-small h-slarge fw-700 ${props.className}`
   }
 
   return (
