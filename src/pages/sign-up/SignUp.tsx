@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { DibbbreLogo, PrimaryButton } from '../../components'
+import { routes } from '../routes'
 
 export const SignUp: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ export const SignUp: React.FC = () => {
       </Col>
       <Col flex="auto">
         <Row justify="end" className="pdt-lmedium pdr-lmedium">
-          <p>Already a member? <Link to="/sign-in">Sign in</Link></p>
+          <p>Already a member? <Link to={routes.signIn}>Sign in</Link></p>
         </Row>
 
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">

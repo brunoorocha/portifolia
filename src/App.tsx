@@ -3,25 +3,25 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { HomePage } from './pages/home'
 import { NavBar, ScrollToTop } from './components/'
 import './assets/css/style.less'
-import { SignUp } from './pages/sign-up/SignUp';
-import { SignIn } from './pages/sign-in/SignIn';
-
+import { SignUp } from './pages/sign-up/SignUp'
+import { SignIn } from './pages/sign-in/SignIn'
+import { routes } from './pages/routes'
 
 const App: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/sign-up">
+        <Route path={routes.signUp}>
           <ScrollToTop />
           <SignUp />
         </Route>
 
-        <Route path="/sign-in">
+        <Route path={routes.signIn}>
           <ScrollToTop />
           <SignIn />
         </Route>
 
-        <Route path="">
+        <Route path={routes.home}>
           <ScrollToTop />
           <NavBar />
           <HomePage />

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { ChevronDown } from 'react-feather'
 import { DibbbreLogo } from '../base/DibbbreLogo'
 import { LinkButton } from '../base/Button'
+import { routes } from '../../pages/routes'
 
 export const NavBar: React.FC = () => {
   const { Header } = Layout
@@ -13,7 +14,7 @@ export const NavBar: React.FC = () => {
     <Header className="bg-color-white">
       <Row gutter={[20, 0]} align="middle">
         <Col>
-          <Link to="">
+          <Link to={routes.home}>
             <DibbbreLogo size="small" />
           </Link>
         </Col>
@@ -29,8 +30,8 @@ export const NavBar: React.FC = () => {
         </Col>
         <Col flex="auto">
           <div className="d-flex jc-end">
-            <LinkButton to="/sign-in" className="mr-small">Sign in</LinkButton>
-            <LinkButton to="/sign-up" type="primary">Sign up</LinkButton>
+            <LinkButton to={routes.signIn} className="mr-small">Sign in</LinkButton>
+            <LinkButton to={routes.signUp} type="primary">Sign up</LinkButton>
           </div>
         </Col>
       </Row>
