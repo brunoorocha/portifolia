@@ -10,11 +10,11 @@ h1:extend(.fw-700, .sm-fs-large) {
   margin-bottom: @smedium;
 }
 
-h2:extend(.fw-900, .sm-fs-slarge, .mb-medium) {
+h2:extend(.fw-700, .sm-fs-slarge, .mb-medium) {
   color: @text-color;
 }
 
-h3:extend(.fw-400, .sm-fs-mmedium, .mb-medium) {
+h3:extend(.fw-700, .sm-fs-mmedium, .mb-medium) {
   color: @text-color;
 }
 
@@ -124,5 +124,17 @@ footer.ant-layout-footer {
     background-color: @white;
     color: @pink-500;
     font-weight: 500;
+  }
+}
+
+.ant-form-item-control-input .ant-input,
+.ant-form-item-control-input .ant-input-password {
+  border-radius: @small;
+  border-color: @gray-200;
+  font-size: @smedium;
+  padding: @small @smedium;
+  
+  &:hover {
+    border-color: @gray-300;
   }
 }

@@ -6,6 +6,7 @@ interface ButtonProps {
   className?: string
   onClick?: () => void
   id?: string
+  isSubmit?: boolean
 }
 
 interface LinkButtonProps extends ButtonProps {
@@ -19,6 +20,7 @@ export const PrimaryButton: React.FC<ButtonProps> = props => (
     className={`br-small h-slarge fw-700 ${props.className || ''}`}
     onClick={props.onClick}
     id={props.id}
+    htmlType={props.isSubmit ? 'submit' : 'button' }
   >
     { props.children }
   </AntdButton>

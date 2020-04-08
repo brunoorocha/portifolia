@@ -9,8 +9,6 @@ import { SignUp } from './pages/sign-up/SignUp';
 const App: React.FC = () => {
   return (
     <Router>
-      <NavBar />
-
       <Switch>
         <Route path="/sign-up">
           <ScrollToTop />
@@ -19,6 +17,7 @@ const App: React.FC = () => {
 
         <Route path="">
           <ScrollToTop />
+          <NavBar />
           <HomePage />
         </Route>
       </Switch>

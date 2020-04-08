@@ -16,7 +16,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
       <div className="p-relative w-100per o-hidden br-small mb-small">
         <img src={props.imageUrl} alt="" className="w-100per" />
         <div className="p-absolute w-100per h-100per bg-black-gradient bs-border-box pd-medium d-flex ai-end show-when-hover" style={{ bottom: '0' }}>
-          <Row className="w-100per" align="middle">
+          <Row className="w-100per up-when-show" align="middle">
             <Col flex="auto">
               <span className="fw-500 color-white">{props.title}</span>
             </Col>
