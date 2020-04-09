@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProjectCard } from '../project-card/ProjectCard'
-import { Project } from '../../models/Project'
+import { Project } from '../../domain/entities/Project'
 
 interface ProjectsFeedProps {
   projects: Project[]

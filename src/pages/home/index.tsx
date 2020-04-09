@@ -1,7 +1,7 @@
 import React from 'react'
 import { Banner, ProjectFilter, ProjectsFeed } from '../../components'
 import { Row } from 'antd'
-import { Project } from '../../models/Project'
+import { Project } from '../../domain/entities/Project'
 
 export const HomePage = () => {
   const projects: Project[] = [
