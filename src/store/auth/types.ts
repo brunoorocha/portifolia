@@ -9,3 +9,8 @@ export interface AuthState {
   readonly token?: string
   readonly isLoading: boolean
 }
+
+export interface SignInStartAction {
+  type: typeof AuthTypes.SIGN_IN_START
+  payload: { username: string, password: string }
+}
