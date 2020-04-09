@@ -5,7 +5,8 @@ import { signIn } from '../../store/auth/actions'
 import { SignIn } from './SignIn'
 
 const mapStateToProps = (state: AppState) => ({
-    isLoadingSignIn: state.auth.isLoading
+  isLoadingSignIn: state.auth.isLoading,
+  user: state.auth.authenticatedUser
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ signIn }, dispatch)

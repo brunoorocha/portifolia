@@ -43,6 +43,5 @@ export function* getAuthenticatedUserProfile (action: SetTokenAction) {
     const errorMessage: Message = { content: message, type: 'error' }
 
     yield put(pushMessage(errorMessage))
-    yield put(signInEnd())
   }
 }

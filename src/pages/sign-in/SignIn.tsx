@@ -1,17 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { DibbbreLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
+import { User } from '../../domain/entities/User'
 
 interface SignInProps {
   signIn: (username: string, password: string) => void
   isLoadingSignIn: boolean
+  user?: User
 }
 
 export const SignIn: React.FC<SignInProps> = props => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const history = useHistory()
+
+  useEffect(() => {
+    if (props.user) {
+      history.push(routes.home)
+    }
+  }, [props.user, history])
 
   const onFormFinish = () => {
     props.signIn(username, password)
