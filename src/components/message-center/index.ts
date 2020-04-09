@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { AppState } from '../../store/app/types'
 import { pushMessage } from '../../store/message-center/actions'
-import { MessageCenter } from './MessageCenter'
+import { MessageCenter as MessageCenterComponent } from './MessageCenter'
 
 const mapStateToProps = (state: AppState) => ({
   messages: state.messageCenter.messages
@@ -10,5 +10,5 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ pushMessage }, dispatch)
 
-export const MessageCenterProvider = connect(mapStateToProps, mapDispatchToProps)(MessageCenter)
+export const MessageCenter = connect(mapStateToProps, mapDispatchToProps)(MessageCenterComponent)
 

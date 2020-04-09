@@ -5,8 +5,13 @@ import { ChevronDown } from 'react-feather'
 import { DibbbreLogo } from '../base/DibbbreLogo'
 import { LinkButton } from '../base/Button'
 import { routes } from '../../pages/routes'
+import { User } from '../../domain/entities/User'
 
-export const NavBar: React.FC = () => {
+interface NavBarProps {
+  user?: User
+}
+
+export const NavBar: React.FC<NavBarProps> = props => {
   const { Header } = Layout
   const { Item } = Menu
 
@@ -29,10 +34,17 @@ export const NavBar: React.FC = () => {
           </Menu>
         </Col>
         <Col flex="auto">
-          <div className="d-flex jc-end">
-            <LinkButton to={routes.signIn} className="mr-small">Sign in</LinkButton>
-            <LinkButton to={routes.signUp} type="primary">Sign up</LinkButton>
-          </div>
+          { !props.user && 
+            <div className="d-flex jc-end">
+              <LinkButton to={routes.signIn} className="mr-small">Sign in</LinkButton>
+              <LinkButton to={routes.signUp} type="primary">Sign up</LinkButton>
+            </div>
+           }
+           { props.user && 
+            <div className="d-flex jc-end">
+              <Link to="">{ props.user.username }</Link>
+            </div>
+           }
         </Col>
       </Row>
     </Header>
