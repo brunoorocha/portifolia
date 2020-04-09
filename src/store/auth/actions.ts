@@ -8,4 +8,6 @@ export const signInEnd = () => action(AuthTypes.SIGN_IN_END)
 
 export const setToken = (token: string) => action(AuthTypes.SET_TOKEN, { token })
 
+export const signOut = () => action(AuthTypes.SIGN_OUT)
+
 export const setAuthenticatedUser = (user: User) => action(AuthTypes.SET_AUTHENTICATED_USER, { user })

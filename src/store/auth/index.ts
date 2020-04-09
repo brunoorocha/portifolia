@@ -12,6 +12,8 @@ export const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
       return { ...state, isLoading: true }
     case AuthTypes.SIGN_IN_END:
       return { ...state, isLoading: false }
+    case AuthTypes.SIGN_OUT:
+      return { ...state, token: undefined, authenticatedUser: undefined }
     case AuthTypes.SET_TOKEN:
       return { ...state, token: action.payload.token }
     case AuthTypes.SET_AUTHENTICATED_USER:

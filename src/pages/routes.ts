@@ -2,5 +2,6 @@
 export const routes = {
   home: '',
   signUp: '/sign-up',
-  signIn: '/sign-in'
+  signIn: '/sign-in',
+  signOut: '/sign-out'
 }

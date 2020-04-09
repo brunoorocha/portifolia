@@ -1,7 +1,7 @@
 import React from 'react'
-import { Menu, Layout, Row, Col } from 'antd'
+import { Menu, Layout, Row, Col, Dropdown, Avatar } from 'antd'
 import { Link } from 'react-router-dom'
-import { ChevronDown } from 'react-feather'
+import { ChevronDown, User as UserIcon } from 'react-feather'
 import { DibbbreLogo } from '../base/DibbbreLogo'
 import { LinkButton } from '../base/Button'
 import { routes } from '../../pages/routes'
@@ -14,6 +14,17 @@ interface NavBarProps {
 export const NavBar: React.FC<NavBarProps> = props => {
   const { Header } = Layout
   const { Item } = Menu
+
+  const userDropdownMenu = (
+    <Menu>
+      <Item key="0">Profile</Item>
+      <Menu.Divider />
+      <Item key="1">Account settings</Item>
+      <Item key="2">
+        <Link to={routes.signOut}>Sign Out</Link>
+      </Item>
+    </Menu>
+  )
 
   return (
     <Header className="bg-color-white">
@@ -35,14 +46,18 @@ export const NavBar: React.FC<NavBarProps> = props => {
         </Col>
         <Col flex="auto">
           { !props.user && 
-            <div className="d-flex jc-end">
+            <div className="d-flex ai-center jc-end">
               <LinkButton to={routes.signIn} className="mr-small">Sign in</LinkButton>
               <LinkButton to={routes.signUp} type="primary">Sign up</LinkButton>
             </div>
            }
            { props.user && 
-            <div className="d-flex jc-end">
-              <Link to="">{ props.user.username }</Link>
+            <div className="d-flex ai-center jc-end">
+              <Dropdown overlay={userDropdownMenu} trigger={['hover']}>
+                <Avatar icon={<UserIcon />} />
+              </Dropdown>
+
+              <LinkButton to={routes.signUp} type="primary" className="ml-medium">Upload</LinkButton>
             </div>
            }
         </Col>
