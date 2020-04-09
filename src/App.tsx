@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { NavBar, ScrollToTop } from './components/'
+import { NavBar, ScrollToTop, MessageCenterProvider } from './components/'
 import { SignUp } from './pages/sign-up/SignUp'
 import { HomePage } from './pages/home'
 import SignIn from './pages/sign-in'
@@ -12,6 +12,8 @@ import './assets/css/style.less'
 const App: React.FC = () => {
   return (
     <Provider store={store}>
+      <MessageCenterProvider />
+
       <Router>
         <Switch>
           <Route path={routes.signUp}>

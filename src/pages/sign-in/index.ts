@@ -4,11 +4,9 @@ import { AppState } from '../../store/app/types'
 import { signIn } from '../../store/auth/actions'
 import { SignIn } from './SignIn'
 
-const mapStateToProps = (state: AppState) => {
-  return {
+const mapStateToProps = (state: AppState) => ({
     isLoadingSignIn: state.auth.isLoading
-  }
-}
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ signIn }, dispatch)
 
