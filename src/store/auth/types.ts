@@ -1,6 +1,7 @@
-import { User } from "../../domain/entities/User";
+import { User } from '../../domain/entities/User'
+import { SignInDTO } from '../../domain/dto/sign-in-dto'
 
-export enum AuthTypes {
+export enum AuthActionTypes {
   SIGN_IN_START = '@auth/SIGN_IN_START',
   SIGN_IN_END = '@auth/SIGN_IN_END',
   SIGN_OUT = '@auth/SIGN_OUT',
@@ -15,11 +16,11 @@ export interface AuthState {
 }
 
 export interface SignInStartAction {
-  type: typeof AuthTypes.SIGN_IN_START
-  payload: { username: string, password: string }
+  type: typeof AuthActionTypes.SIGN_IN_START
+  payload: SignInDTO
 }
 
 export interface SetTokenAction {
-  type: typeof AuthTypes.SET_TOKEN
+  type: typeof AuthActionTypes.SET_TOKEN
   payload: { token: string }
 }

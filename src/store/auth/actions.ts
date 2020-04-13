@@ -1,13 +1,13 @@
 import { action } from 'typesafe-actions'
-import { AuthTypes } from './types'
+import { AuthActionTypes } from './types'
 import { User } from '../../domain/entities/User'
 
-export const signIn = (username: string, password: string) => action(AuthTypes.SIGN_IN_START, { username, password })
+export const signIn = (username: string, password: string) => action(AuthActionTypes.SIGN_IN_START, { username, password })
 
-export const signInEnd = () => action(AuthTypes.SIGN_IN_END)
+export const signInEnd = () => action(AuthActionTypes.SIGN_IN_END)
 
-export const setToken = (token: string) => action(AuthTypes.SET_TOKEN, { token })
+export const setToken = (token: string) => action(AuthActionTypes.SET_TOKEN, { token })
 
-export const signOut = () => action(AuthTypes.SIGN_OUT)
+export const signOut = () => action(AuthActionTypes.SIGN_OUT)
 
-export const setAuthenticatedUser = (user: User) => action(AuthTypes.SET_AUTHENTICATED_USER, { user })
+export const setAuthenticatedUser = (user: User) => action(AuthActionTypes.SET_AUTHENTICATED_USER, { user })
