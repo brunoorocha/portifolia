@@ -5,12 +5,16 @@ import { User as UserIcon } from 'react-feather'
 import { LinkButton } from '../base/Button'
 import { routes } from '../../pages/routes'
 
-export const UserNavBarItems: React.FC = props => {
+interface UserNavBarItemsProps {
+  username: string
+}
+
+export const UserNavBarItems: React.FC<UserNavBarItemsProps> = props => {
   const { Item } = Menu
 
   const userDropdownMenu = (
     <Menu>
-      <Item key="0">Profile</Item>
+      <Item key="0">{ props.username }</Item>
       <Menu.Divider />
       <Item key="1">Account settings</Item>
       <Item key="2">

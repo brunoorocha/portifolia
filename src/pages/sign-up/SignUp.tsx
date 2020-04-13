@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { DibbbreLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
+import { CreateUserDTO } from '../../domain/dto/create-user-dto'
+import { User } from '../../domain/entities/User'
 
-export const SignUp: React.FC = () => {
+interface SignUpProps {
+  isCreateUserLoading: boolean
+  createUser: (createUserDTO: CreateUserDTO) => void
+  user?: User
+}
+
+export const SignUp: React.FC<SignUpProps> = props => {
+  const [name, setName] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
+
+  useEffect(() => {
+    if (props.user) {
+      history.push(routes.home)
+    }
+  }, [props.user, history])
+
+  const onFormFinish = () => {
+    props.createUser({ name, username, email, password })
+  }
+
   return (
     <Row>
       <Col xs={0} sm={0} md={8} className="bg-color-yellow-100 h-100vh">
@@ -23,14 +48,14 @@ export const SignUp: React.FC = () => {
 
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">
           <h3>Sign up to Dibbbre</h3>
-          <Form layout="vertical">
+          <Form layout="vertical" onFinish={onFormFinish}>
             <Row gutter={[20, 0]}>
               <Col xs={24} sm={12}>
                 <Form.Item
                   label="Name"
                   name="name"
                   rules={[{ required: true, message: 'Please input your name' }]}>
-                  <Input />
+                  <Input onChange={event => setName(event.target.value)} />
                 </Form.Item>
               </Col>
 
@@ -39,7 +64,7 @@ export const SignUp: React.FC = () => {
                   label="Username"
                   name="username"
                   rules={[{ required: true, message: 'Please input your username' }]}>
-                  <Input />
+                  <Input onChange={event => setUsername(event.target.value)} />
                 </Form.Item>
               </Col>
             </Row>
@@ -50,7 +75,7 @@ export const SignUp: React.FC = () => {
                   label="Email"
                   name="email"
                   rules={[{ required: true, message: 'Please input your email' }]}>
-                  <Input />
+                  <Input onChange={event => setEmail(event.target.value)} />
                 </Form.Item>
               </Col>
             </Row>
@@ -61,7 +86,7 @@ export const SignUp: React.FC = () => {
                   label="Password"
                   name="password"
                   rules={[{ required: true, message: 'Please input your password' }]}>
-                  <Input.Password />
+                  <Input.Password onChange={event => setPassword(event.target.value)} />
                 </Form.Item>
               </Col>
             </Row>
@@ -69,7 +94,7 @@ export const SignUp: React.FC = () => {
             <Row>
               <Col span={24}>
                 <Form.Item>
-                  <PrimaryButton isSubmit={true}>Create Account</PrimaryButton>
+                  <PrimaryButton isLoading={props.isCreateUserLoading} isSubmit={true}>Create Account</PrimaryButton>
                 </Form.Item>
               </Col>
             </Row>

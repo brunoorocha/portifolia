@@ -6,7 +6,7 @@ export enum UserActionTypes {
 }
 
 export interface UserState {
-  isLoading: boolean
+  isCreateUserLoading: boolean
 }
 
 export interface CreateUserAction {
