@@ -4,7 +4,7 @@ export interface Project {
   title: string
   imageUrl: string
   likeCount: number
-  author: {
+  user: {
     username: string
   }
 }

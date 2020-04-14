@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { AppState } from '../../store/app/types'
 import { signIn } from '../../store/auth/actions'
-import { SignIn } from './SignIn'
+import { SignIn as SignInComponent } from './SignIn'
 
 const mapStateToProps = (state: AppState) => ({
   isLoadingSignIn: state.auth.isLoading,
@@ -11,4 +11,4 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ signIn }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export const SignIn = connect(mapStateToProps, mapDispatchToProps)(SignInComponent)
