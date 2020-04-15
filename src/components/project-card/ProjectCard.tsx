@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Row, Col } from 'antd'
 import { Heart, FolderPlus } from 'react-feather'
 import { Button } from '../base/Button'
@@ -9,14 +9,11 @@ interface ProjectCardProps {
   imageUrl: string
   likeCount: number
   title: string
+  isLiked?: boolean
+  onIsLikedChange?: () => void
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = props => {
-  const [isLiked, setIsLiked] = useState(false)
-
-  const didClickOnLikeButton = () => {
-    setIsLiked(!isLiked)
-  }
 
   return (
     <div className="w-100per d-flex fd-column">
@@ -31,7 +28,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
               <Button className="w-lmedium h-lmedium d-flex ai-center jc-center pd-none mr-small">
                 <FolderPlus className="f-icon f-icon-smedium" />
               </Button>
-              <LikeButton isLiked={isLiked} onLike={didClickOnLikeButton} />
+
+              <LikeButton isLiked={props.isLiked} onClick={props.onIsLikedChange} />
             </Col>
           </Row>
         </div>

@@ -4,6 +4,7 @@ export interface Project {
   title: string
   imageUrl: string
   likesCount: number
+  isLiked?: boolean
   user: {
     username: string
   }
