@@ -14,5 +14,5 @@ export interface ProjectState {
 
 export interface ToggleProjectIsLikedAction {
   type: typeof ProjectActionTypes.TOGGLE_PROJECT_IS_LIKED
-  payload: { projectId: number }
+  payload: { project: Project }
 }

@@ -8,4 +8,4 @@ export const fetchAllProjectsEnd = () => action(ProjectActionTypes.FETCH_ALL_END
 
 export const setProjectsFeed = (projects: Project[]) => action(ProjectActionTypes.SET_PROJECTS_FEED, { projects })
 
-export const toggleProjectIsLiked = (projectId: number) => action(ProjectActionTypes.TOGGLE_PROJECT_IS_LIKED, { projectId })
+export const toggleProjectIsLiked = (project: Project) => action(ProjectActionTypes.TOGGLE_PROJECT_IS_LIKED, { project })

@@ -4,12 +4,12 @@ import { Project } from '../../domain/entities/Project'
 
 interface ProjectsFeedProps {
   projects: Project[]
-  toggleProjectIsLiked: (projectId: number) => void
+  toggleProjectIsLiked: (project: Project) => void
 }
 
 export const ProjectsFeed: React.FC<ProjectsFeedProps> = props => {
   const projectIsLikedDidChange = (project: Project) => {
-    props.toggleProjectIsLiked(project.id)
+    props.toggleProjectIsLiked(project)
   }
 
   return (

@@ -15,9 +15,9 @@ export const reducer: Reducer<ProjectState> = (state = INITIAL_STATE, action) =>
     case ProjectActionTypes.SET_PROJECTS_FEED:
       return { ...state, projectsFeed: action.payload.projects }
     case ProjectActionTypes.TOGGLE_PROJECT_IS_LIKED:
-      const projectId = (action as ToggleProjectIsLikedAction).payload.projectId
+      const { project } = (action as ToggleProjectIsLikedAction).payload
       const projectsFeed = state.projectsFeed.map(p => {
-        if (p.id === projectId) {
+        if (p.id === project.id) {
           p.isLiked = !p.isLiked
           p.likesCount += p.isLiked ? 1 : -1
         }

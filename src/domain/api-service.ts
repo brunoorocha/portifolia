@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-export const ApiService = axios.create({
-  baseURL: 'http://localhost:5000'
-})
+export const tokenKey = 'access_token'
 
 export const getAuthorizationHeader = () => {
   const token = localStorage.getItem(tokenKey)
@@ -11,4 +9,10 @@ export const getAuthorizationHeader = () => {
   }
 }
 
-export const tokenKey = 'access_token'
+export const ApiService = axios.create({
+  baseURL: 'http://localhost:5000',
+  headers: { 
+    ...getAuthorizationHeader()
+  }
+})
+
