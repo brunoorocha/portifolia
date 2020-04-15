@@ -6,7 +6,8 @@ import { HomePage } from './Home'
 
 const mapStateToProps = (state: AppState) => ({
   feed: state.project.projectsFeed,
-  isLoadingFeed: state.project.isFetchingAll
+  isLoadingFeed: state.project.isFetchingAll,
+  user: state.auth.authenticatedUser
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ fetchAllProjects  }, dispatch)

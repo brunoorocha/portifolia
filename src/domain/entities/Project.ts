@@ -3,7 +3,7 @@ export interface Project {
   id: number
   title: string
   imageUrl: string
-  likeCount: number
+  likesCount: number
   user: {
     username: string
   }
