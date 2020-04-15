@@ -9,7 +9,7 @@ export const getAuthorizationHeader = () => {
   }
 }
 
-export const ApiService = axios.create({
+export const ApiService = () => axios.create({
   baseURL: 'http://localhost:5000',
   headers: { 
     ...getAuthorizationHeader()

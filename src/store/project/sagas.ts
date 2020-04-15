@@ -25,7 +25,7 @@ export function* toggleProjectIsLiked (action: ToggleProjectIsLikedAction) {
   try {
     const { project } = action.payload
     const projectUseCases = new ProjectUseCases()
-    if (project.isLiked) {
+    if (!project.isLiked) {
       yield call(projectUseCases.dislikeProject, project.id)
       return
     }

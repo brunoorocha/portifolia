@@ -4,7 +4,7 @@ import { SignInDTO } from "../dto/sign-in-dto"
 
 export class AuthUseCases {
   signIn = async (credentials: SignInDTO): Promise<any> => {
-    const { data } = await ApiService.post(DribbbreApiResources.auth, credentials)
+    const { data } = await ApiService().post(DribbbreApiResources.auth, credentials)
     return data
   }
 }

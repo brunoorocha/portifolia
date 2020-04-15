@@ -42,7 +42,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
         </Col>
         <Col>
           <div className="d-flex ai-center color-gray-500">
-            <Heart className="f-icon f-icon-smedium" />
+            <Heart className={`f-icon f-icon-smedium ${props.isLiked ? 'color-pink-500' : ''}`} />
             <span className="ml-xsmall">{props.likeCount}</span>
           </div>
         </Col>
