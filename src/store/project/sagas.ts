@@ -2,8 +2,8 @@ import { put, call } from 'redux-saga/effects'
 import { ProjectUseCases } from '../../domain/use-cases/project-usecases'
 import { pushMessage } from '../message-center/actions'
 import { Message } from '../../models/Message'
-import { fetchAllProjectsEnd, setProjectsFeed } from './actions'
-import { ToggleProjectIsLikedAction } from './types'
+import { fetchAllProjectsEnd, setProjectsFeed, setSelectedProject, createProjectDidEnd } from './actions'
+import { ToggleProjectIsLikedAction, CreateProjectAction } from './types'
 
 export function* fetchAllProjects () {
   try {
@@ -36,5 +36,22 @@ export function* toggleProjectIsLiked (action: ToggleProjectIsLikedAction) {
     const message = error.response ? error.response.data.message : error.message
     const errorMessage: Message = { content: message, type: 'error' }
     yield put(pushMessage(errorMessage))
+  }
+}
+
+export function* createProject (action: CreateProjectAction) {
+  try {
+    const { createProjectDTO } = action.payload
+    const projectUseCases = new ProjectUseCases()
+    const createdProject = yield call(projectUseCases.createProject, createProjectDTO)
+    yield put(setSelectedProject(createdProject))
+  }
+  catch (error) {
+    const message = error.response ? error.response.data.message : error.message
+    const errorMessage: Message = { content: message, type: 'error' }
+    yield put(pushMessage(errorMessage))
+  }
+  finally {
+    yield put(createProjectDidEnd())
   }
 }
