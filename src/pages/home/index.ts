@@ -10,6 +10,6 @@ const mapStateToProps = (state: AppState) => ({
   user: state.auth.authenticatedUser
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ fetchAllProjects  }, dispatch)
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ fetchAllProjects }, dispatch)
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage)

@@ -24,3 +24,8 @@ export interface SetTokenAction {
   type: typeof AuthActionTypes.SET_TOKEN
   payload: { token: string }
 }
+
+export interface SetAuthenticatedUserAction {
+  type: typeof AuthActionTypes.SET_AUTHENTICATED_USER
+  payload: { user: User }
+}

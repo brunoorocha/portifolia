@@ -7,8 +7,8 @@ import { User } from '../../domain/entities/User'
 interface HomeProps {
   feed: Project[]
   isLoadingFeed: boolean
-  fetchAllProjects: () => void
   user?: User
+  fetchAllProjects: () => void
 }
 
 export const HomePage: React.FC<HomeProps> = props => {
