@@ -128,15 +128,16 @@ footer.ant-layout-footer {
   }
 }
 
-.ant-form-item-control-input .ant-input,
-.ant-form-item-control-input .ant-input-password {
-  border-radius: @small;
-  border-color: @gray-200;
-  font-size: @smedium;
-  padding: @small @smedium;
-  
-  &:hover {
-    border-color: @gray-300;
+.ant-form-item-control-input {
+  .ant-input, .ant-input-password {
+    border-radius: @small;
+    border-color: @gray-200;
+    font-size: @smedium;
+    padding: @small @smedium;
+
+    &:hover {
+      border-color: @gray-300;
+    }
   }
 }
 
@@ -149,5 +150,17 @@ footer.ant-layout-footer {
 .ant-dropdown {
   .ant-dropdown-menu-item {
     padding: @small @medium;
+  }
+}
+
+.ant-upload-drag {
+  .f-icon {
+    transition: color .3s;
+  }
+
+  &:hover {
+    .f-icon {
+      color: @pink-500;
+    }
   }
 }

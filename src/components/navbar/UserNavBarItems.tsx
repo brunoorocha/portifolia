@@ -29,7 +29,7 @@ export const UserNavBarItems: React.FC<UserNavBarItemsProps> = props => {
         <Avatar icon={<UserIcon />} />
       </Dropdown>
 
-      <LinkButton to={routes.signUp} type="primary" className="ml-medium">Upload</LinkButton>
+      <LinkButton to={routes.upload} type="primary" className="ml-medium">Upload</LinkButton>
     </>
   )
 }
