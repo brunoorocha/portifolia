@@ -5,7 +5,8 @@ import { pushMessage } from '../../store/message-center/actions'
 import { MessageCenter as MessageCenterComponent } from './MessageCenter'
 
 const mapStateToProps = (state: AppState) => ({
-  messages: state.messageCenter.messages
+  messages: state.messageCenter.messages,
+  notifications: state.messageCenter.notifications
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ pushMessage }, dispatch)

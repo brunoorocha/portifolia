@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
-import { message } from 'antd'
+import { message, notification, Avatar } from 'antd'
 import { Message } from '../../models/Message'
+import { Notification } from '../../models/Notification'
+import { X } from 'react-feather'
 
 interface MessageCenterProps {
   messages: Message[]
+  notifications: Notification[]
 }
 
 export const MessageCenter: React.FC<MessageCenterProps> = props => {
@@ -28,6 +31,19 @@ export const MessageCenter: React.FC<MessageCenterProps> = props => {
         break
     }
   }, [props.messages])
+
+  useEffect(() => {
+    const lastNotification = props.notifications.pop()
+    if (!lastNotification) { return }
+
+    notification.open({
+      message: lastNotification.title,
+      description: lastNotification.message,
+      closeIcon: <X />,
+      icon: <Avatar />
+    })
+
+  }, [props.notifications])
 
   return null
 }

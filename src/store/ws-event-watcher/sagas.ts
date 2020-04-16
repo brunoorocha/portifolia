@@ -2,8 +2,9 @@ import { eventChannel, END } from 'redux-saga'
 import { call, putResolve, take, put } from 'redux-saga/effects'
 import SocketIOClient from 'socket.io-client'
 import { connectionSuccess } from './actions'
-import { pushMessage } from '../message-center/actions'
+import { pushMessage, pushNotification } from '../message-center/actions'
 import { Message } from '../../models/Message'
+import { Notification } from '../../models/Notification'
 import { SetAuthenticatedUserAction } from '../auth/types'
 
 function createSocketConnection () {
@@ -22,15 +23,14 @@ function createSocketConnection () {
 
 function createSocketChannel (socket: SocketIOClient.Socket, userId: number) {
   return eventChannel(emit => {
-    socket.on('handshake', (event: any) => {
-      emit(event)
-    })
-
     socket.on(`notifications:user:${userId}`, (event: any) => {
-      emit(event)
+      const notification: Notification = { title: 'Notification', message: event.message }
+      emit(pushNotification(notification))
     })
 
     socket.on('disconnect', () => {
+      const message: Message = { type: 'info', content: 'You lose your connection.' }
+      emit(pushMessage(message))
       emit(END)
     })
 
@@ -48,8 +48,8 @@ export function* startWatchEventsForUser (action: SetAuthenticatedUserAction) {
     yield putResolve(connectionSuccess())
 
     while (true) {
-      const event = yield take(socketChannel)
-      // yield putResolve()
+      const action = yield take(socketChannel)
+      yield put(action)
     }
   }
   catch (error) {
