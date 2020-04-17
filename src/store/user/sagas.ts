@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import { signIn } from '../auth/actions'
-import { createUserEnd, setUserProfile } from './actions'
+import { createUserEnd, setUserProfile, fetchUserWithUsernameEnd } from './actions'
 import { CreateUserAction, FetchUserWithUsernameAction } from './types'
 import { Message } from '../../models/Message'
 import { pushMessage } from '../message-center/actions'
@@ -37,5 +37,8 @@ export function* fetchUserProfile (action: FetchUserWithUsernameAction) {
     const errorMessage: Message = { content: message, type: 'error' }
 
     yield put(pushMessage(errorMessage))
+  }
+  finally {
+    yield put(fetchUserWithUsernameEnd())
   }
 }

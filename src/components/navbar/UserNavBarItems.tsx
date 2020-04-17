@@ -14,7 +14,11 @@ export const UserNavBarItems: React.FC<UserNavBarItemsProps> = props => {
 
   const userDropdownMenu = (
     <Menu>
-      <Item key="0">{ props.username }</Item>
+      <Item key="0">
+        <Link to={`/${props.username}`}>
+          { props.username }
+        </Link>
+      </Item>
       <Menu.Divider />
       <Item key="1">Account settings</Item>
       <Item key="2">
