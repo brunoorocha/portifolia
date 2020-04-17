@@ -42,9 +42,16 @@
   padding: 0;
 }
 
-.container {
+.small-container, .container {
   width: calc(100% - 40px);
-  max-width: @container-max-width;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.container {
+  max-width: @container-max-width;
+}
+
+.small-container {
+  max-width: @small-container-max-width;
 }

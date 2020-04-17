@@ -3,8 +3,11 @@ import { Row, Col } from 'antd'
 import { Heart, FolderPlus } from 'react-feather'
 import { Button } from '../base/Button'
 import { LikeButton } from '../like-button/LikeButton'
+import { Link } from 'react-router-dom'
+import { routes } from '../../pages/routes'
 
 interface ProjectCardProps {
+  projectId: number
   username: string
   imageUrl: string
   likeCount: number
@@ -22,7 +25,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
         <div className="p-absolute w-100per h-100per bg-black-gradient bs-border-box pd-medium d-flex ai-end show-when-hover" style={{ bottom: '0' }}>
           <Row className="w-100per up-when-show" align="middle">
             <Col flex="auto">
-              <span className="fw-500 color-white">{props.title}</span>
+              <Link to={`${routes.projects}/${props.projectId}`}>
+                <span className="fw-500 color-white">{props.title}</span>
+              </Link>
             </Col>
             <Col className="d-flex">
               <Button className="w-lmedium h-lmedium d-flex ai-center jc-center pd-none mr-small">

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
-import { Row } from 'antd'
-import { Project } from '../../domain/entities/Project'
 import { Link, useParams } from 'react-router-dom'
+import { Row, Col, Avatar } from 'antd'
+import { Project } from '../../domain/entities/Project'
+import { Button } from '../../components'
+import { Heart } from 'react-feather'
 
 interface ProjectDetailsProps {
   project?: Project
@@ -14,16 +16,47 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = props => {
   const parsedProjectId = parseInt(projectId!)
 
   useEffect(() => {
-    if (project) { return }
+    if (project && project.id === parsedProjectId) { return }
     fetchProjectWithId(parsedProjectId)
   }, [fetchProjectWithId, project, parsedProjectId])
 
   return (
-    <div className="container">
+    <div className="small-container">
       { project && <div>  
+        <Row className="pdt-lmedium pdb-smedium">
+          <Col flex="auto" className="d-flex">
+            <div className="mr-smedium">
+              <Avatar size="large" />
+            </div>
+            <div>
+              <h4 className="mb-xsmall">{ project.title }</h4>
+              <p>by <Link to="">{ project.user.username }</Link></p>
+            </div>
+          </Col>
+          <Col>
+            <Button className="mr-smedium">Save</Button>
+            <Button>Like</Button>
+          </Col>
+        </Row>
         <Row>
-          <h3>{ project.title }</h3>
-          <p>by <Link to="">{ project.user.username }</Link></p>
+          <Col>
+            <img src={project.imageUrl} alt="" className="br-medium w-100per" />
+          </Col>
+        </Row>
+        <Row gutter={[40, 40]} className="pdt-lmedium pdb-lmedium">
+          <Col xs={24} sm={16} md={16}>
+            <p>{ project.description }</p>
+
+            <div className="">
+              <h5>Responses</h5>
+            </div>
+          </Col>
+          <Col xs={24} sm={8} md={8}>
+            <span className="d-flex ai-center color-gray-500">
+              <Heart className="f-icon f-icon-smedium mr-smedium" />
+              { project.likesCount } likes
+            </span>
+          </Col>
         </Row>
       </div>}
     </div>

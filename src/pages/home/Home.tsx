@@ -21,7 +21,7 @@ export const HomePage: React.FC<HomeProps> = props => {
   return (
     <>
       {!props.user && <Banner />}
-      <Row className="container">
+      <Row className="container pdb-lmedium">
         <ProjectFilter />
         <ProjectsFeed projects={props.feed} />
       </Row>

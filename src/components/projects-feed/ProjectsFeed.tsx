@@ -17,6 +17,7 @@ export const ProjectsFeed: React.FC<ProjectsFeedProps> = props => {
       { props.projects.map(project => (
         <li key={project.id}>
           <ProjectCard
+            projectId={project.id}
             username={project.user.username}
             imageUrl={project.imageUrl}
             likeCount={project.likesCount}
