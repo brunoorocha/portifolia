@@ -41,9 +41,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
       </div>
 
       <Row>
-        <Col flex="auto" className="d-flex ai-center">
-          <img src="" alt="" className="d-flex w-medium h-medium bg-color-gray-100 br-smedium" />
-          <span className="fw-500 ml-small">{props.username}</span>
+        <Col flex="auto" className="d-flex">
+          <Link to={`/${props.username}`} className="d-flex ai-center color-text">
+            <img src="" alt="" className="d-flex w-medium h-medium bg-color-gray-100 br-smedium" />
+            <span className="fw-500 ml-small">{props.username}</span>
+          </Link>
         </Col>
         <Col>
           <div className="d-flex ai-center color-gray-500">

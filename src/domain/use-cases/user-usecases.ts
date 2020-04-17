@@ -4,8 +4,8 @@ import { ApiService, getAuthorizationHeader } from '../api-service'
 import { CreateUserDTO } from '../dto/create-user-dto'
 
 export class UserUseCases {
-  getProfile = async (id: number): Promise<User> => {
-    const { data } = await ApiService().get(DribbbreApiResources.profile(id), { headers: getAuthorizationHeader() })
+  getProfile = async (idOrUsername: number | string): Promise<User> => {
+    const { data } = await ApiService().get(DribbbreApiResources.profile(idOrUsername), { headers: getAuthorizationHeader() })
     return data
   }
 

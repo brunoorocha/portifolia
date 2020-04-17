@@ -5,7 +5,7 @@ import { ProjectActionTypes } from './project/types'
 import { signIn, getAuthenticatedUserProfile } from './auth/sagas'
 import { fetchAllProjects, toggleProjectIsLiked, createProject, fetchProjectWithId } from './project/sagas'
 import { startWatchEventsForUser } from './ws-event-watcher/sagas'
-import { createUser } from './user/sagas'
+import { createUser, fetchUserProfile } from './user/sagas'
 
 export default function* rootSaga () {
   return yield all([
@@ -14,6 +14,7 @@ export default function* rootSaga () {
     takeLatest(AuthActionTypes.SET_AUTHENTICATED_USER, startWatchEventsForUser),
 
     takeLatest(UserActionTypes.CREATE_USER_START, createUser),
+    takeLatest(UserActionTypes.FETCH_USER_WITH_USERNAME, fetchUserProfile),
 
     takeLatest(ProjectActionTypes.FETCH_ALL_START, fetchAllProjects),
     takeLatest(ProjectActionTypes.TOGGLE_PROJECT_IS_LIKED, toggleProjectIsLiked),

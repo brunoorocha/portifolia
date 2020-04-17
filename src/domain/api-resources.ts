@@ -2,7 +2,7 @@
 export const DribbbreApiResources = {
   auth: '/auth',
   createUser: '/users',
-  profile: (userId: number) => `/users/${userId}`,
+  profile: (userIdOrUsername: number | string) => `/users/${userIdOrUsername}`,
 
   projects: '/projects',
   project: (projectId: number) => `/projects/${projectId}`,
