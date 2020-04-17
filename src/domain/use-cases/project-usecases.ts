@@ -19,6 +19,11 @@ export class ProjectUseCases {
     return data
   }
 
+  fetchProjectWithId = async (projectId: number): Promise<Project> => {
+    const { data } = await ApiService().get(DribbbreApiResources.project(projectId))
+    return data
+  }
+
   likeProject = async (projectId: number): Promise<any> => {
     const { data } = await ApiService().post(DribbbreApiResources.projectLikes(projectId))
     return data

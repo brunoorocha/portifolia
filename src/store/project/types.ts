@@ -10,10 +10,13 @@ export enum ProjectActionTypes {
   CREATE_PROJECT_END = '@project/CREATE_PROJECT_END',
   SET_SELECTED_PROJECT = '@project/SET_SELECTED_PROJECT',
   SET_CREATED_PROJECT = '@project/SET_CREATED_PROJECT',
+  FETCH_PROJECT_WITH_ID = '@project/FETCH_PROJECT_WITH_ID',
+  FETCH_PROJECT_END = '@project/FETCH_PROJECT_END',
 }
 
 export interface ProjectState {
   isFetchingAll: boolean
+  isFetchingProject: boolean
   isCreatingProject: boolean
   projectsFeed: Project[]
   selectedProject?: Project
@@ -28,4 +31,9 @@ export interface ToggleProjectIsLikedAction {
 export interface CreateProjectAction {
   type: typeof ProjectActionTypes.CREATE_PROJECT
   payload: { createProjectDTO: CreateProjectDTO }
+}
+
+export interface FetchProjectWithIdAction {
+  type: typeof ProjectActionTypes.CREATE_PROJECT
+  payload: { projectId: number }
 }

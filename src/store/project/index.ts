@@ -3,6 +3,7 @@ import { Reducer } from 'redux'
 
 const INITIAL_STATE: ProjectState = {
   isFetchingAll: false,
+  isFetchingProject: false,
   isCreatingProject: false,
   projectsFeed: []
 }
@@ -35,6 +36,10 @@ export const reducer: Reducer<ProjectState> = (state = INITIAL_STATE, action) =>
       return { ...state, createdProject: action.payload.project }
     case ProjectActionTypes.SET_SELECTED_PROJECT:
       return { ...state, selectedProject: action.payload.project }
+    case ProjectActionTypes.FETCH_PROJECT_WITH_ID:
+      return { ...state, isFetchingProject: true }
+    case ProjectActionTypes.FETCH_PROJECT_END:
+      return { ...state, isFetchingProject: false }
     default:
       return state
   }

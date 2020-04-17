@@ -18,3 +18,7 @@ export const createProjectDidEnd = () => action(ProjectActionTypes.CREATE_PROJEC
 export const setSelectedProject = (project?: Project) => action(ProjectActionTypes.SET_SELECTED_PROJECT, { project })
 
 export const setCreatedProject = (project?: Project) => action(ProjectActionTypes.SET_CREATED_PROJECT, { project })
+
+export const fetchProjectWithId = (projectId: number) => action(ProjectActionTypes.FETCH_PROJECT_WITH_ID, { projectId })
+
+export const fetchProjectEnd = () => action(ProjectActionTypes.FETCH_PROJECT_END)
