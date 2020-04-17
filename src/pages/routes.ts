@@ -5,4 +5,5 @@ export const routes = {
   signIn: '/sign-in',
   signOut: '/sign-out',
   upload: '/upload',
+  projects: '/projects',
 }

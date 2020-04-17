@@ -5,7 +5,8 @@ import { Upload as UploadComponent } from './Upload'
 import { createProject } from '../../store/project/actions'
 
 const mapStateToProps = (state: AppState) => ({
-  isCreatingProject: state.project.isCreatingProject
+  isCreatingProject: state.project.isCreatingProject,
+  projectCreated: state.project.selectedProject
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ createProject }, dispatch)

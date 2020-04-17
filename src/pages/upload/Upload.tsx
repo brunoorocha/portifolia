@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Row, Upload as AntdUpload, Col, Form, Input } from 'antd'
 import { UploadCloud } from 'react-feather'
 import { PrimaryButton } from '../../components'
 import { CreateProjectDTO } from '../../domain/dto/create-project-dto'
+import { Project } from '../../domain/entities/Project'
+import { routes } from '../routes'
 
 interface UploadProps {
   isCreatingProject: boolean
+  projectCreated?: Project
   createProject: (createProjectDTO: CreateProjectDTO) => void
 }
 
@@ -14,6 +18,12 @@ export const Upload: React.FC<UploadProps> = props => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [image, setImage] = useState({})
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!props.projectCreated) { return }
+    history.push(`${routes.projects}/${props.projectCreated.id}`)
+  }, [history, props.projectCreated])
 
   const onFormFinish = () => {
     const imageFile = (image as File)

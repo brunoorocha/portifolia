@@ -7,6 +7,7 @@ import { SignIn } from './pages/sign-in'
 import { SignUp } from './pages/sign-up'
 import { SignOut } from './pages/sign-out'
 import { Upload } from './pages/upload'
+import { ProjectDetails } from './pages/project-details'
 import { routes } from './pages/routes'
 import store from './store'
 import './assets/css/style.less'
@@ -37,6 +38,12 @@ const App: React.FC = () => {
             <ScrollToTop />
             <NavBar />
             <Upload />
+          </Route>
+
+          <Route path={`${routes.projects}/:projectId`}>
+            <ScrollToTop />
+            <NavBar />
+            <ProjectDetails />
           </Route>
 
           <Route path={routes.home}>
