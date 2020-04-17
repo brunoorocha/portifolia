@@ -9,6 +9,7 @@ export enum ProjectActionTypes {
   CREATE_PROJECT = '@project/CREATE_PROJECT',
   CREATE_PROJECT_END = '@project/CREATE_PROJECT_END',
   SET_SELECTED_PROJECT = '@project/SET_SELECTED_PROJECT',
+  SET_CREATED_PROJECT = '@project/SET_CREATED_PROJECT',
 }
 
 export interface ProjectState {
@@ -16,6 +17,7 @@ export interface ProjectState {
   isCreatingProject: boolean
   projectsFeed: Project[]
   selectedProject?: Project
+  createdProject?: Project
 }
 
 export interface ToggleProjectIsLikedAction {

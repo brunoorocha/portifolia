@@ -15,4 +15,6 @@ export const createProject = (createProjectDTO: CreateProjectDTO) => action(Proj
 
 export const createProjectDidEnd = () => action(ProjectActionTypes.CREATE_PROJECT_END)
 
-export const setSelectedProject = (project: Project) => action(ProjectActionTypes.SET_SELECTED_PROJECT, { project })
+export const setSelectedProject = (project?: Project) => action(ProjectActionTypes.SET_SELECTED_PROJECT, { project })
+
+export const setCreatedProject = (project?: Project) => action(ProjectActionTypes.SET_CREATED_PROJECT, { project })

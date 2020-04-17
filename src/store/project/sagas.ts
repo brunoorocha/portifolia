@@ -2,7 +2,7 @@ import { put, call } from 'redux-saga/effects'
 import { ProjectUseCases } from '../../domain/use-cases/project-usecases'
 import { pushMessage } from '../message-center/actions'
 import { Message } from '../../models/Message'
-import { fetchAllProjectsEnd, setProjectsFeed, setSelectedProject, createProjectDidEnd } from './actions'
+import { fetchAllProjectsEnd, setProjectsFeed, setCreatedProject, createProjectDidEnd } from './actions'
 import { ToggleProjectIsLikedAction, CreateProjectAction } from './types'
 
 export function* fetchAllProjects () {
@@ -44,7 +44,7 @@ export function* createProject (action: CreateProjectAction) {
     const { createProjectDTO } = action.payload
     const projectUseCases = new ProjectUseCases()
     const createdProject = yield call(projectUseCases.createProject, createProjectDTO)
-    yield put(setSelectedProject(createdProject))
+    yield put(setCreatedProject(createdProject))
   }
   catch (error) {
     const message = error.response ? error.response.data.message : error.message

@@ -31,6 +31,8 @@ export const reducer: Reducer<ProjectState> = (state = INITIAL_STATE, action) =>
       return { ...state, isCreatingProject: true }
     case ProjectActionTypes.CREATE_PROJECT_END:
       return { ...state, isCreatingProject: false }
+    case ProjectActionTypes.SET_CREATED_PROJECT:
+      return { ...state, createdProject: action.payload.project }
     case ProjectActionTypes.SET_SELECTED_PROJECT:
       return { ...state, selectedProject: action.payload.project }
     default:

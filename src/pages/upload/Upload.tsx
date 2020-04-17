@@ -9,8 +9,10 @@ import { routes } from '../routes'
 
 interface UploadProps {
   isCreatingProject: boolean
-  projectCreated?: Project
+  createdProject?: Project
   createProject: (createProjectDTO: CreateProjectDTO) => void
+  setCreatedProject: (project?: Project) => void
+  setSelectedProject: (project?: Project) => void
 }
 
 export const Upload: React.FC<UploadProps> = props => {
@@ -18,12 +20,18 @@ export const Upload: React.FC<UploadProps> = props => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [image, setImage] = useState({})
+
+  const { setCreatedProject, setSelectedProject, createdProject } = props
   const history = useHistory()
 
   useEffect(() => {
-    if (!props.projectCreated) { return }
-    history.push(`${routes.projects}/${props.projectCreated.id}`)
-  }, [history, props.projectCreated])
+    if (!createdProject) { return }
+    const createdProjectId = createdProject.id
+    setSelectedProject({ ...createdProject })
+    setCreatedProject(undefined)
+
+    history.push(`${routes.projects}/${createdProjectId}`)
+  }, [history, createdProject, setSelectedProject, setCreatedProject])
 
   const onFormFinish = () => {
     const imageFile = (image as File)
