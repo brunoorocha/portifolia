@@ -8,25 +8,18 @@ import { getAuthorizationHeader } from '../../domain/api-service'
 
 interface EditProfileProps {
   user?: User
+  setAuthenticatedUserProfileImage: (profileImageUrl?: string) => void
 }
 
 export const EditProfile: React.FC<EditProfileProps> = props => {
-  const [uploadedImagePath, setUploadedImagePath] = useState('')
   const [isLoadingProfileImage, setIsLoadingProfileImage] = useState(false)
-
-  const getBase64FromImage = (image: File, callback: (url: string) => void) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback((reader.result as string)));
-    reader.readAsDataURL(image);
-  }
 
   const onUploadChange = (info: any) => {
     setIsLoadingProfileImage(info.file.status === 'uploading')
 
     if (info.file.status === 'done') {
-      getBase64FromImage(info.file.originFileObj, (previewUrl: string) => {
-        setUploadedImagePath(previewUrl)
-      })
+      const { photoUrl } = info.file.response
+      props.setAuthenticatedUserProfileImage(photoUrl)
     }
   }
 
@@ -57,7 +50,7 @@ export const EditProfile: React.FC<EditProfileProps> = props => {
               <Avatar
                 size="large"
                 className="w-ularge h-ularge mr-medium"
-                src={uploadedImagePath !== '' ? uploadedImagePath : props.user.profileImage} />
+                src={props.user.profileImage} />
               <Upload
                 name="profileImage"
                 multiple={false}

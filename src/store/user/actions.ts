@@ -14,3 +14,5 @@ export const fetchUserWithUsernameEnd = () => action(UserActionTypes.FETCH_USER_
 export const setUserProfile = (user: User) => action(UserActionTypes.SET_USER_PROFILE, { user })
 
 export const setAuthenticatedUser = (user?: User) => action(UserActionTypes.SET_AUTHENTICATED_USER, { user })
+
+export const setAuthenticatedUserProfileImage = (profileImageUrl?: string) => action(UserActionTypes.SET_AUTHENTICATED_USER_PROFILE_IMAGE, { profileImageUrl })

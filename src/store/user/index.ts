@@ -20,6 +20,9 @@ export const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
       return { ...state, userProfile: action.payload.user }
     case UserActionTypes.SET_AUTHENTICATED_USER:
       return { ...state, authenticatedUser: action.payload.user }
+    case UserActionTypes.SET_AUTHENTICATED_USER_PROFILE_IMAGE:
+      const user = { ...state.authenticatedUser, profileImage: action.payload.profileImageUrl }
+      return { ...state, authenticatedUser: user }
     default:
       return state
   }
