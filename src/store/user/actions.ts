@@ -12,3 +12,5 @@ export const fetchUserWithUsername = (username: string) => action(UserActionType
 export const fetchUserWithUsernameEnd = () => action(UserActionTypes.FETCH_USER_WITH_USERNAME_END)
 
 export const setUserProfile = (user: User) => action(UserActionTypes.SET_USER_PROFILE, { user })
+
+export const setAuthenticatedUser = (user: User) => action(UserActionTypes.SET_AUTHENTICATED_USER, { user })

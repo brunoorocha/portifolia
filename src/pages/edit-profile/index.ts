@@ -4,7 +4,7 @@ import { AppState } from '../../store/app/types'
 import { EditProfile as EditProfileComponent } from './EditProfile'
 
 const mapStateToProps = (state: AppState) => ({
-  user: state.auth.authenticatedUser
+  user: state.user.authenticatedUser
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({}, dispatch)

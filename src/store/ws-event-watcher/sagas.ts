@@ -5,7 +5,7 @@ import { connectionSuccess } from './actions'
 import { pushMessage, pushNotification } from '../message-center/actions'
 import { Message } from '../../models/Message'
 import { Notification } from '../../models/Notification'
-import { SetAuthenticatedUserAction } from '../auth/types'
+import { SetAuthenticatedUserAction } from '../user/types'
 
 function createSocketConnection () {
   return new Promise((resolve, reject) => {

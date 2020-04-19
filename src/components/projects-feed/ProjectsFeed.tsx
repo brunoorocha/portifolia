@@ -19,6 +19,7 @@ export const ProjectsFeed: React.FC<ProjectsFeedProps> = props => {
           <ProjectCard
             projectId={project.id}
             username={project.user.username}
+            userImage={project.user.profileImage}
             imageUrl={project.imageUrl}
             likeCount={project.likesCount}
             isLiked={project.isLiked}

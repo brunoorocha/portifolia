@@ -5,7 +5,7 @@ import { AppState } from '../../store/app/types'
 import { RoutesAuth as RoutesAuthComponent } from './routes-auth'
 
 const mapStateToProps = (state: AppState) => ({
-  user: state.auth.authenticatedUser,
+  user: state.user.authenticatedUser,
   token: state.auth.token
 })
 

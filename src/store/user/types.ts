@@ -7,12 +7,14 @@ export enum UserActionTypes {
   FETCH_USER_WITH_USERNAME = '@user/FETCH_USER_WITH_USERNAME',
   FETCH_USER_WITH_USERNAME_END = '@user/FETCH_USER_WITH_USERNAME_END',
   SET_USER_PROFILE = '@user/SET_USER_PROFILE',
+  SET_AUTHENTICATED_USER = '@user/SET_AUTHENTICATED_USER',
 }
 
 export interface UserState {
   isCreateUserLoading: boolean
   isFetchUserLoading: boolean
   userProfile?: User
+  authenticatedUser?: User
 }
 
 export interface CreateUserAction {
@@ -23,4 +25,9 @@ export interface CreateUserAction {
 export interface FetchUserWithUsernameAction {
   type: typeof UserActionTypes.FETCH_USER_WITH_USERNAME
   payload: { username: string }
+}
+
+export interface SetAuthenticatedUserAction {
+  type: typeof UserActionTypes.SET_AUTHENTICATED_USER
+  payload: { user: User }
 }

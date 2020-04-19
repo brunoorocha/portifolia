@@ -6,7 +6,7 @@ import { SignUp as SignUpComponent } from './SignUp'
 
 const mapStateToProps = (state: AppState) => ({
   isCreateUserLoading: state.user.isCreateUserLoading,
-  user: state.auth.authenticatedUser
+  user: state.user.authenticatedUser
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ createUser }, dispatch)

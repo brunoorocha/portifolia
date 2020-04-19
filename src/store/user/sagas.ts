@@ -1,10 +1,12 @@
 import { put, call } from 'redux-saga/effects'
 import { signIn } from '../auth/actions'
-import { createUserEnd, setUserProfile, fetchUserWithUsernameEnd } from './actions'
+import { createUserEnd, setUserProfile, fetchUserWithUsernameEnd, setAuthenticatedUser } from './actions'
 import { CreateUserAction, FetchUserWithUsernameAction } from './types'
 import { Message } from '../../models/Message'
 import { pushMessage } from '../message-center/actions'
 import { UserUseCases } from '../../domain/use-cases/user-usecases'
+import { SetTokenAction } from '../auth/types'
+import jwtDecode from 'jwt-decode'
 
 export function* createUser (action: CreateUserAction) {
   try {
@@ -40,5 +42,22 @@ export function* fetchUserProfile (action: FetchUserWithUsernameAction) {
   }
   finally {
     yield put(fetchUserWithUsernameEnd())
+  }
+}
+
+export function* getAuthenticatedUserProfile (action: SetTokenAction) {
+  try {
+    const { token } = action.payload
+    const decodedToken: any = jwtDecode(token)
+    const userId = decodedToken.sub
+    const useCases = new UserUseCases()
+    const user = yield call(useCases.getProfile, userId)
+    yield put(setAuthenticatedUser(user))
+  }
+  catch (error) {
+    const message = error.response ? error.response.data.message : error.message
+    const errorMessage: Message = { content: message, type: 'error' }
+
+    yield put(pushMessage(errorMessage))
   }
 }

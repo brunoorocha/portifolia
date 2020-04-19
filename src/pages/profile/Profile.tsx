@@ -25,7 +25,7 @@ export const Profile: React.FC<ProfileProps> = props => {
       { (user && !isLoadingUserProfile) &&
         <Row justify="center">
           <Col className="d-flex">
-            <Avatar size="large" className="w-ularge h-ularge" />
+            <Avatar src={user.profileImage} size="large" className="w-ularge h-ularge" />
             <div className="d-flex fd-column ml-lmedium">
               <h3 className="mb-xsmall">{ user.name }</h3>
               <span className="mb-medium color-gray-500">@{ user.username }</span>

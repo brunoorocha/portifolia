@@ -26,11 +26,11 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = props => {
         <Row className="pdt-lmedium pdb-smedium">
           <Col flex="auto" className="d-flex">
             <div className="mr-smedium">
-              <Avatar size="large" />
+              <Avatar src={project.user.profileImage} size="large" />
             </div>
             <div>
               <h4 className="mb-xsmall">{ project.title }</h4>
-              <p>by <Link to="">{ project.user.username }</Link></p>
+              <p>by <Link to={`/${project.user.username}`}>{ project.user.username }</Link></p>
             </div>
           </Col>
           <Col>

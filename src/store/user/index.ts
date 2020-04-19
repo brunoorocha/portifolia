@@ -18,6 +18,8 @@ export const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
       return { ...state, isFetchUserLoading: false }
     case UserActionTypes.SET_USER_PROFILE:
       return { ...state, userProfile: action.payload.user }
+    case UserActionTypes.SET_AUTHENTICATED_USER:
+      return { ...state, authenticatedUser: action.payload.user }
     default:
       return state
   }

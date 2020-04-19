@@ -8,5 +8,6 @@ export interface Project {
   isLiked?: boolean
   user: {
     username: string
+    profileImage: string
   }
 }
