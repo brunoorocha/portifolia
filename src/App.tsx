@@ -9,6 +9,7 @@ import { SignOut } from './pages/sign-out'
 import { Upload } from './pages/upload'
 import { Profile } from './pages/profile'
 import { ProjectDetails } from './pages/project-details'
+import { EditProfile } from './pages/edit-profile'
 import { routes } from './pages/routes'
 import store from './store'
 import './assets/css/style.less'
@@ -45,6 +46,12 @@ const App: React.FC = () => {
             <ScrollToTop />
             <NavBar />
             <ProjectDetails />
+          </Route>
+
+          <Route path={routes.editProfile}>
+            <ScrollToTop />
+            <NavBar />
+            <EditProfile />
           </Route>
 
           <Route path="/:username">

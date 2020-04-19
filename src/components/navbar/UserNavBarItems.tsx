@@ -7,6 +7,7 @@ import { routes } from '../../pages/routes'
 
 interface UserNavBarItemsProps {
   username: string
+  profileImageUrl?: string
 }
 
 export const UserNavBarItems: React.FC<UserNavBarItemsProps> = props => {
@@ -30,7 +31,7 @@ export const UserNavBarItems: React.FC<UserNavBarItemsProps> = props => {
   return (
     <>
       <Dropdown overlay={userDropdownMenu} trigger={['hover']}>
-        <Avatar icon={<UserIcon />} />
+        <Avatar icon={<UserIcon />} src={props.profileImageUrl} />
       </Dropdown>
 
       <LinkButton to={routes.upload} type="primary" className="ml-medium">Upload</LinkButton>

@@ -43,7 +43,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
            }
            { props.user && 
             <div className="d-flex ai-center jc-end">
-              <UserNavBarItems username={props.user.username} />
+              <UserNavBarItems username={props.user.username} profileImageUrl={props.user.profileImage} />
             </div>
            }
         </Col>

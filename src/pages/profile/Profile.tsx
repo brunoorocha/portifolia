@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { User } from '../../domain/entities/User'
 import { Row, Col, Avatar } from 'antd'
-import { GhostButton } from '../../components'
+import { LinkButton } from '../../components'
+import { routes } from '../routes'
 
 interface ProfileProps {
   user?: User
@@ -29,7 +30,7 @@ export const Profile: React.FC<ProfileProps> = props => {
               <h3 className="mb-xsmall">{ user.name }</h3>
               <span className="mb-medium color-gray-500">@{ user.username }</span>
               <div>
-                <GhostButton>Edit profile</GhostButton>
+                <LinkButton to={routes.editProfile} type="ghost">Edit profile</LinkButton>
               </div>
             </div>
           </Col>

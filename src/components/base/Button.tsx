@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 interface LinkButtonProps extends ButtonProps {
-  type?: 'primary' | 'default'
+  type?: 'primary' | 'default' | 'ghost'
   to?: string
 }
 
@@ -54,7 +54,8 @@ export const LinkButton: React.FC<LinkButtonProps> = props => {
   const type = props.type || 'default'
   const classes = {
     primary: `ant-btn ant-btn-primary br-small h-slarge fw-700 ${props.className}`,
-    default: `ant-btn ant-btn-default br-small h-slarge fw-700 ${props.className}`
+    default: `ant-btn ant-btn-default br-small h-slarge fw-700 ${props.className}`,
+    ghost: `ant-btn ant-btn-ghost br-small h-slarge fw-700 ${props.className}`
   }
 
   return (

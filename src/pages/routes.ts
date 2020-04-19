@@ -6,4 +6,5 @@ export const routes = {
   signOut: '/sign-out',
   upload: '/upload',
   projects: '/projects',
+  editProfile: '/edit-profile'
 }
