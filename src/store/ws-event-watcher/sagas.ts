@@ -42,6 +42,8 @@ function createSocketChannel (socket: SocketIOClient.Socket, userId: number) {
 
 export function* startWatchEventsForUser (action: SetAuthenticatedUserAction) {
   const { user } = action.payload
+  if (!user) { return }
+
   try {
     let socket = yield call(createSocketConnection)
     let socketChannel = yield call(createSocketChannel, socket, user.id)

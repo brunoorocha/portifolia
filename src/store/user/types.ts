@@ -29,5 +29,5 @@ export interface FetchUserWithUsernameAction {
 
 export interface SetAuthenticatedUserAction {
   type: typeof UserActionTypes.SET_AUTHENTICATED_USER
-  payload: { user: User }
+  payload: { user?: User }
 }
