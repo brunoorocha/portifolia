@@ -6,7 +6,8 @@ import { fetchUserWithUsername } from '../../store/user/actions'
 
 const mapStateToProps = (state: AppState) => ({
   isLoadingUserProfile: state.user.isFetchUserLoading,
-  user: state.user.userProfile
+  user: state.user.userProfile,
+  isAuthenticatedUser: state.user.userProfile?.id === state.user.authenticatedUser?.id
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ fetchUserWithUsername }, dispatch)

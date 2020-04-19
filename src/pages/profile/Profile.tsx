@@ -7,6 +7,7 @@ import { routes } from '../routes'
 
 interface ProfileProps {
   user?: User
+  isAuthenticatedUser: boolean
   isLoadingUserProfile: boolean
   fetchUserWithUsername: (username: string) => void
 }
@@ -29,9 +30,11 @@ export const Profile: React.FC<ProfileProps> = props => {
             <div className="d-flex fd-column ml-lmedium">
               <h3 className="mb-xsmall">{ user.name }</h3>
               <span className="mb-medium color-gray-500">@{ user.username }</span>
-              <div>
-                <LinkButton to={routes.editProfile} type="ghost">Edit profile</LinkButton>
-              </div>
+              { props.isAuthenticatedUser &&
+                <div>
+                  <LinkButton to={routes.editProfile} type="ghost">Edit profile</LinkButton>
+                </div>
+              }
             </div>
           </Col>
         </Row>

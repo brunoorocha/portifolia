@@ -21,7 +21,9 @@ export const UserNavBarItems: React.FC<UserNavBarItemsProps> = props => {
         </Link>
       </Item>
       <Menu.Divider />
-      <Item key="1">Account settings</Item>
+      <Item key="1">
+        <Link to={routes.editProfile}>Account settings</Link>
+      </Item>
       <Item key="2">
         <Link to={routes.signOut}>Sign Out</Link>
       </Item>
