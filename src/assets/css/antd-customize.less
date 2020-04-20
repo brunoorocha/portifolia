@@ -41,7 +41,7 @@ footer.ant-layout-footer {
 
 .ant-layout-header.bg-color-white {
   background-color: @white;
-  border-bottom: 1px solid @gray-100;
+  border-bottom: 1px solid @gray-200;
   height: 80px;
 
   .ant-menu {
@@ -161,6 +161,24 @@ footer.ant-layout-footer {
   &:hover {
     .f-icon {
       color: @pink-500;
+    }
+  }
+}
+
+.ant-tabs {
+  .ant-tabs-bar {
+    border-bottom-color: @gray-200;
+    margin-bottom: @lmedium;
+  }
+
+  .ant-tabs-nav-container {
+    .ant-tabs-tab {
+      color: @gray-500;
+      padding-bottom: @medium;
+  
+      &.ant-tabs-tab-active {
+        color: @text-color;
+      }
     }
   }
 }

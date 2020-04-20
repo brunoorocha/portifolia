@@ -1,4 +1,3 @@
-import { User } from '../../domain/entities/User'
 import { SignInDTO } from '../../domain/dto/sign-in-dto'
 
 export enum AuthActionTypes {

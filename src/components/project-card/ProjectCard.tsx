@@ -8,8 +8,8 @@ import { routes } from '../../pages/routes'
 
 interface ProjectCardProps {
   projectId: number
-  username: string
-  userImage: string
+  username?: string
+  userImage?: string
   imageUrl: string
   likeCount: number
   title: string
@@ -41,20 +41,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
         </div>
       </div>
 
-      <Row>
-        <Col flex="auto" className="d-flex">
-          <Link to={`/${props.username}`} className="d-flex ai-center color-text">
-            <Avatar size="small" src={props.userImage} />
-            <span className="fw-500 ml-small">{props.username}</span>
-          </Link>
-        </Col>
-        <Col>
-          <div className="d-flex ai-center color-gray-500">
-            <Heart className={`f-icon f-icon-smedium ${props.isLiked ? 'color-pink-500' : ''}`} />
-            <span className="ml-xsmall">{props.likeCount}</span>
-          </div>
-        </Col>
-      </Row>
+      { props.username &&
+        <Row>
+          <Col flex="auto" className="d-flex">
+            <Link to={`/${props.username}`} className="d-flex ai-center color-text">
+              <Avatar size="small" src={props.userImage} />
+              <span className="fw-500 ml-small">{props.username}</span>
+            </Link>
+          </Col>
+          <Col>
+            <div className="d-flex ai-center color-gray-500">
+              <Heart className={`f-icon f-icon-smedium ${props.isLiked ? 'color-pink-500' : ''}`} />
+              <span className="ml-xsmall">{props.likeCount}</span>
+            </div>
+          </Col>
+        </Row>
+      }
     </div>
   )
 }

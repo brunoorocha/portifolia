@@ -1,3 +1,4 @@
+import { Project } from './Project'
 
 export interface User {
   readonly id: number
@@ -5,4 +6,6 @@ export interface User {
   readonly username: string
   readonly email: string
   readonly profileImage?: string
+  readonly projects?: Project[]
+  readonly likedCount?: number
 }
