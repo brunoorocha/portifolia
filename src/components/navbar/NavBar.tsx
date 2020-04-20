@@ -30,8 +30,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
             mode="horizontal"
           >
             <Item key="1">Explore <ChevronDown className="f-icon f-icon-smedium" /></Item>
-            <Item key="2">For Designers <ChevronDown className="f-icon f-icon-smedium" /></Item>
-            <Item key="3">Hiring Designers?</Item>
+            <Item key="2">Blog</Item>
           </Menu>
         </Col>
         <Col flex="auto">

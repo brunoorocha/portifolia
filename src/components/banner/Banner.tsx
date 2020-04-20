@@ -1,22 +1,24 @@
 import React from 'react'
 import { Row, Col } from 'antd'
 import { LinkButton } from '../base/Button'
-import bannerImage from '../../assets/images/romainbriaux-9270a203743088cf36b939b04708d9a18fa794e04373964283a2d87c8f6fba0f.png'
+import bannerImage from '../../assets/images/banner-illustration.png'
 import { routes } from '../../pages/routes'
 
 export const Banner: React.FC = () => {
   return (
     <div className="bg-color-pink-100 pdt-slarge pdb-slarge">
-      <Row className="container" align="middle">
-        <Col xs={24} sm={12} md={12}>
-          <h1>Discover the world’s top designers & creatives</h1>
-          <p>Dribbble is the leading destination to find & showcase creative work and home to the world's best design professionals.</p>
-          <LinkButton to={routes.signUp} type="primary">Sign up</LinkButton>
-        </Col>
-        <Col xs={24} sm={12} md={12}>
-          <img src={bannerImage} alt="" className="w-100per pd-smedium" />
-        </Col>
-      </Row>
+      <div className="container">
+        <Row align="middle" gutter={[40, 0]}>
+          <Col xs={24} sm={12} md={12}>
+            <h1>Mozart’s telling us from up the sky… “Go on a journey,” he’s saying.</h1>
+            <p>Portifolia it's a personal project that I'm developing for the purpose of learning but it would be great if someday it become useful for someone else. Visitors, abuse with moderation.</p>
+            <LinkButton to={routes.signUp} type="primary">Start your jorney</LinkButton>
+          </Col>
+          <Col xs={24} sm={12} md={12}>
+            <img src={bannerImage} alt="" className="w-100per pd-smedium" />
+          </Col>
+        </Row>
+      </div>
     </div>
   )
 }

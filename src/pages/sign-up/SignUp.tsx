@@ -6,7 +6,7 @@ import { DibbbreLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
 import { CreateUserDTO } from '../../domain/dto/create-user-dto'
 import { User } from '../../domain/entities/User'
-import bgPatterns from '../../assets/images/background-patterns.png'
+import loginIllustration from '../../assets/images/login-illustration.png'
 
 interface SignUpProps {
   isCreateUserLoading: boolean
@@ -33,16 +33,19 @@ export const SignUp: React.FC<SignUpProps> = props => {
 
   return (
     <Row>
-      <Col xs={0} sm={0} md={10} className="h-100vh o-hidden">
-        <img src={bgPatterns} alt="" className="w-100per h-100vh" style={{ objectFit: 'cover' }} />
+      <Col xs={0} sm={0} md={8} className="bg-color-pink-100 h-100vh pdl-lmedium pdr-lmedium d-flex fd-column jc-space-between">
+        <div className="pdt-lmedium">
+          <Link to="">
+            <DibbbreLogo size="small" />
+          </Link>
+        </div>
+        <div className="d-flex pdb-ularge">
+          <img src={loginIllustration} alt="" className="w-100per" style={{ objectFit: 'cover' }} />
+        </div>
       </Col>
+
       <Col flex="auto">
-        <Row align="middle" className="pdt-lmedium pdr-lmedium pdl-lmedium">
-          <Col flex="auto">
-            <Link to="">
-              <DibbbreLogo size="small" />
-            </Link>
-          </Col>
+        <Row justify="end" className="pdt-lmedium pdr-lmedium pdl-lmedium">
           <Col className="d-flex ai-center">
             <span>Already a member? <Link to={routes.signIn}>Sign in</Link></span>
           </Col>
