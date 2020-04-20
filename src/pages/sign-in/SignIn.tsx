@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { DibbbreLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
 import { User } from '../../domain/entities/User'
+import bgPatterns from '../../assets/images/background-patterns.png'
 
 interface SignInProps {
   signIn: (username: string, password: string) => void
@@ -29,23 +30,24 @@ export const SignIn: React.FC<SignInProps> = props => {
 
   return (
     <Row>
-      <Col xs={0} sm={0} md={8} className="bg-color-yellow-100 h-100vh">
-        <div className="pd-large">
-          <Link to="">
-            <DibbbreLogo color="yellow" />
-          </Link>
-          <h3 className="color-yellow-800 mt-slarge">Discover the world’s top Designers & Creatives.</h3>
-        </div>
-        <img src="https://cdn.dribbble.com/assets/auth/sign-up-309e26707e1a09e0f27bdf7854df9e3dbdc45d4bbf99ef0d75dc2f3a3a0b4164.png" alt="" className="w-100per" />
+      <Col xs={0} sm={0} md={10} className="h-100vh o-hidden">
+      <img src={bgPatterns} alt="" className="w-100per h-100vh" style={{ objectFit: 'cover' }} />
       </Col>
 
       <Col flex="auto">
-        <Row justify="end" className="pdt-lmedium pdr-lmedium">
-          <p>Not a member? <Link to={routes.signUp}>Sign up now</Link></p>
+        <Row align="middle" className="pdt-lmedium pdr-lmedium pdl-lmedium">
+          <Col flex="auto">
+            <Link to="">
+              <DibbbreLogo size="small" />
+            </Link>
+          </Col>
+          <Col className="d-flex ai-center">
+            <span>Not a member? <Link to={routes.signUp}>Sign up now</Link></span>
+          </Col>
         </Row>
 
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">
-          <h3>Sign in to Dibbbre</h3>
+          <h3>Sign in to Portifolia</h3>
           <Form layout="vertical" onFinish={onFormFinish}>
             <Row>
               <Col span={24}>

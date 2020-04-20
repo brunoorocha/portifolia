@@ -1,5 +1,5 @@
 import React from 'react'
-import dibbreLogo from '../../assets/images/dibbbre-logo.png'
+import dibbreLogo from '../../assets/images/portifolia-logo.png'
 import dibbreLogoYellow from '../../assets/images/dibbbre-logo-yellow.png'
 
 interface DibbbreLogoProps {
@@ -17,9 +17,9 @@ export const DibbbreLogo: React.FC<DibbbreLogoProps> = props => {
   }
 
   const sizesClassNames = {
-    small: 'h-medium',
-    normal: 'h-lmedium',
-    large: 'h-slarge',
+    small: 'h-lmedium',
+    normal: 'h-slarge',
+    large: 'h-large',
   }
 
   return (
