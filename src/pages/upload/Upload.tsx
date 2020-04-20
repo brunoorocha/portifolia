@@ -40,13 +40,14 @@ export const Upload: React.FC<UploadProps> = props => {
   }
 
   return (
-    <div className="container">
+    <div className="small-container">
       <Row className="mt-large">
-        <h2>Publish your project</h2>
+        <h3>Publish your project</h3>
       </Row>
       <Form layout="vertical" onFinish={onFormFinish}>
         <Row gutter={[40, 40]}>
-          <Col xs={24} sm={24} md={14}>
+          <Col span={24}>
+
             <Form.Item name="image" valuePropName="image" rules={[{ required: true, message: 'Please choose an image' }]}>
               <Dragger
                 name=""
@@ -60,13 +61,14 @@ export const Upload: React.FC<UploadProps> = props => {
                   <UploadCloud className="f-icon f-icon-llarge" />
                 </p>
 
-                <h3 className="antd-upload-text mt-medium mb-small">Drag and drop an image</h3>
+                <h4 className="antd-upload-text mt-medium mb-small">Drag and drop an image</h4>
                 <p className="antd-upload-hint">Or click to choose a file</p>
               </Dragger>
             </Form.Item>
           </Col>
-
-          <Col xs={24} sm={24} md={10}>
+        </Row>
+        <Row gutter={[40, 40]}>
+          <Col span={24}>
             <Form.Item
               name="title"
               label="Title"

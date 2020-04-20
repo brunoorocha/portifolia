@@ -8,7 +8,7 @@ interface LikeButtonProps {
 
 export const LikeButton: React.FC<LikeButtonProps> = props => {
   const [isLiked, setIsLiked] = useState(false)
-  const classNames = `w-lmedium h-lmedium d-flex ai-center jc-center pd-none br-small b-none o-none t-default ${ props.isLiked ? 'bg-color-pink-500 color-white' : '' }`
+  const classNames = `cursor-pointer w-lmedium h-lmedium d-flex ai-center jc-center pd-none br-small b-none o-none t-default ${ props.isLiked ? 'bg-color-pink-500 color-white' : '' }`
 
   const onClick = () => {
     setIsLiked(!isLiked)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col, Avatar } from 'antd'
-import { Heart, FolderPlus } from 'react-feather'
+import { Heart, Bookmark } from 'react-feather'
 import { Button } from '../base/Button'
 import { LikeButton } from '../like-button/LikeButton'
 import { Link } from 'react-router-dom'
@@ -32,7 +32,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
             </Col>
             <Col className="d-flex">
               <Button className="w-lmedium h-lmedium d-flex ai-center jc-center pd-none mr-small">
-                <FolderPlus className="f-icon f-icon-smedium" />
+                <Bookmark className="f-icon f-icon-smedium" />
               </Button>
 
               <LikeButton isLiked={props.isLiked} onClick={props.onIsLikedChange} />
