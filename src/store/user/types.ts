@@ -9,11 +9,15 @@ export enum UserActionTypes {
   SET_USER_PROFILE = '@user/SET_USER_PROFILE',
   SET_AUTHENTICATED_USER = '@user/SET_AUTHENTICATED_USER',
   SET_AUTHENTICATED_USER_PROFILE_IMAGE = '@user/SET_AUTHENTICATED_USER_PROFILE_IMAGE',
+  FETCH_PROJECTS_FOR_USER = '@user/FETCH_PROJECTS_FOR_USER',
+  FETCH_PROJECTS_FOR_USER_END = '@user/FETCH_PROJECTS_FOR_USER_END',
+  SET_PROJECTS_OF_USER = '@user/SET_PROJECTS_OF_USER',
 }
 
 export interface UserState {
   isCreateUserLoading: boolean
   isFetchUserLoading: boolean
+  isFetchingUserProjects: boolean
   userProfile?: User
   authenticatedUser?: User
 }
@@ -31,4 +35,9 @@ export interface FetchUserWithUsernameAction {
 export interface SetAuthenticatedUserAction {
   type: typeof UserActionTypes.SET_AUTHENTICATED_USER
   payload: { user?: User }
+}
+
+export interface FetchProjectsForUserAction {
+  type: typeof UserActionTypes.FETCH_PROJECTS_FOR_USER
+  payload: { userIdOrUsername: number | string }
 }

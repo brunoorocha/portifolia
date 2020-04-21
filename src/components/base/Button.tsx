@@ -31,7 +31,7 @@ export const PrimaryButton: React.FC<ButtonProps> = props => (
 export const Button: React.FC<ButtonProps> = props => (
   <AntdButton
     type="default"
-    className={`br-small h-slarge fw-700 ${props.className || ''}`}
+    className={`br-small h-slarge fw-700 d-flex ai-center ${props.className || ''}`}
     onClick={props.onClick}
     id={props.id}
   >

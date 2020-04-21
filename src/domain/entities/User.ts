@@ -7,5 +7,6 @@ export interface User {
   readonly email: string
   readonly profileImage?: string
   readonly projects?: Project[]
-  readonly likedCount?: number
+  readonly projectsCount: number
+  readonly likedCount: number
 }

@@ -5,6 +5,7 @@ export const DribbbreApiResources = {
   auth: '/auth',
   createUser: '/users',
   profile: (userIdOrUsername: number | string) => `/users/${userIdOrUsername}`,
+  projectsForUser: (userIdOrUsername: number | string) => `/users/${userIdOrUsername}/projects`,
   changeProfileImage: (userId: number | string) => `/users/${userId}/profile-image`,
 
   projects: '/projects',

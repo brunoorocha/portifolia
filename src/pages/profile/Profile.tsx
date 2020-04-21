@@ -2,24 +2,31 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { User } from '../../domain/entities/User'
 import { Row, Col, Avatar, Tabs } from 'antd'
-import { LinkButton, ProjectsFeed } from '../../components'
+import { LinkButton, Button, ProjectsFeed } from '../../components'
 import { routes } from '../routes'
+import { Plus } from 'react-feather'
 
 interface ProfileProps {
   user?: User
   isAuthenticatedUser: boolean
   isLoadingUserProfile: boolean
   fetchUserWithUsername: (username: string) => void
+  fetchProjectsForUser: (userIdOrUsername: number | string) => void
 }
 
 export const Profile: React.FC<ProfileProps> = props => {
   const { username } = useParams()
-  const { user, fetchUserWithUsername, isLoadingUserProfile } = props
+  const { user, fetchUserWithUsername, fetchProjectsForUser, isLoadingUserProfile } = props
 
   useEffect(() => {
     if (user && user.username === username) { return }
     fetchUserWithUsername(username!)
-  }, [user, username, fetchUserWithUsername])
+  }, [user, username, fetchUserWithUsername, fetchProjectsForUser])
+
+  useEffect(() => {
+    if (!username) { return }
+    fetchProjectsForUser(username)
+  }, [fetchProjectsForUser, username])
 
   return (
     <div className="container pdt-large pdb-large">
@@ -31,11 +38,17 @@ export const Profile: React.FC<ProfileProps> = props => {
               <div className="d-flex fd-column ml-lmedium">
                 <h3 className="mb-xsmall">{ user.name }</h3>
                 <span className="mb-medium color-gray-500">@{ user.username }</span>
-                { props.isAuthenticatedUser &&
                   <div>
-                    <LinkButton to={routes.editProfile} type="ghost">Edit profile</LinkButton>
+                  { props.isAuthenticatedUser ? 
+                    <LinkButton to={routes.editProfile} type="ghost">Edit profile</LinkButton> :
+                    <Button>
+                      <Plus className="f-icon f-icon-smedium mr-xsmall" />
+                      Follow
+                    </Button>
+                  }
                   </div>
-                }
+                  <div>
+                  </div>
               </div>
             </Col>
           </Row>
@@ -44,14 +57,14 @@ export const Profile: React.FC<ProfileProps> = props => {
               <div>
                 <Tabs defaultActiveKey="1">
                   <Tabs.TabPane
-                    tab={<span>Projects <span className="color-gray-500 ml-small">{user.projects ? user.projects.length : 0}</span></span>}
+                    tab={<span>Projects <span className="color-gray-500 ml-small">{user.projectsCount}</span></span>}
                     key="1"
                   >
                     <ProjectsFeed projects={user.projects ?? []} />
                   </Tabs.TabPane>
 
                   <Tabs.TabPane
-                    tab={<span>Liked <span className="color-gray-500 ml-small">{user.likedCount ?? 0}</span></span>}
+                    tab={<span>Liked <span className="color-gray-500 ml-small">{user.likedCount}</span></span>}
                     key="2"
                   >
                   </Tabs.TabPane>
