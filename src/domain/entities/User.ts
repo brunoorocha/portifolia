@@ -8,5 +8,6 @@ export interface User {
   readonly profileImage?: string
   readonly projects?: Project[]
   readonly projectsCount: number
+  readonly likedProjects?: Project[]
   readonly likedCount: number
 }

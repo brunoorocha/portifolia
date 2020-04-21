@@ -12,12 +12,16 @@ export enum UserActionTypes {
   FETCH_PROJECTS_FOR_USER = '@user/FETCH_PROJECTS_FOR_USER',
   FETCH_PROJECTS_FOR_USER_END = '@user/FETCH_PROJECTS_FOR_USER_END',
   SET_PROJECTS_OF_USER = '@user/SET_PROJECTS_OF_USER',
+  FETCH_LIKED_PROJECTS_FOR_USER = '@user/FETCH_LIKED_PROJECTS_FOR_USER',
+  FETCH_LIKED_PROJECTS_FOR_USER_END = '@user/FETCH_LIKED_PROJECTS_FOR_USER_END',
+  SET_LIKED_PROJECTS_OF_USER = '@user/SET_LIKED_PROJECTS_OF_USER',
 }
 
 export interface UserState {
   isCreateUserLoading: boolean
   isFetchUserLoading: boolean
   isFetchingUserProjects: boolean
+  isFetchingUserLikedProjects: boolean
   userProfile?: User
   authenticatedUser?: User
 }
@@ -39,5 +43,10 @@ export interface SetAuthenticatedUserAction {
 
 export interface FetchProjectsForUserAction {
   type: typeof UserActionTypes.FETCH_PROJECTS_FOR_USER
+  payload: { userIdOrUsername: number | string }
+}
+
+export interface FetchLikedProjectsForUserAction {
+  type: typeof UserActionTypes.FETCH_LIKED_PROJECTS_FOR_USER
   payload: { userIdOrUsername: number | string }
 }

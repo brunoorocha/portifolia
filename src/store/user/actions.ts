@@ -23,3 +23,9 @@ export const fetchProjectsForUser = (userIdOrUsername: number | string) => actio
 export const fetchProjectsForUserEnd = () => action(UserActionTypes.FETCH_PROJECTS_FOR_USER_END)
 
 export const setProjectsForUser = (projects: Project[]) => action(UserActionTypes.SET_PROJECTS_OF_USER, { projects })
+
+export const fetchLikedProjectsForUser = (userIdOrUsername: number | string) => action(UserActionTypes.FETCH_LIKED_PROJECTS_FOR_USER, { userIdOrUsername })
+
+export const fetchLikedProjectsForUserEnd = () => action(UserActionTypes.FETCH_LIKED_PROJECTS_FOR_USER_END)
+
+export const setLikedProjectsForUser = (projects: Project[]) => action(UserActionTypes.SET_LIKED_PROJECTS_OF_USER, { projects })

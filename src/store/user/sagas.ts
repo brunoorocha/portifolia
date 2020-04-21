@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects'
 import { signIn } from '../auth/actions'
-import { createUserEnd, setUserProfile, fetchUserWithUsernameEnd, setAuthenticatedUser, setProjectsForUser } from './actions'
-import { CreateUserAction, FetchUserWithUsernameAction, FetchProjectsForUserAction } from './types'
+import { createUserEnd, setUserProfile, fetchUserWithUsernameEnd, setAuthenticatedUser, setProjectsForUser, setLikedProjectsForUser } from './actions'
+import { CreateUserAction, FetchUserWithUsernameAction, FetchProjectsForUserAction, FetchLikedProjectsForUserAction } from './types'
 import { Message } from '../../models/Message'
 import { pushMessage } from '../message-center/actions'
 import { UserUseCases } from '../../domain/use-cases/user-usecases'
@@ -68,6 +68,20 @@ export function* fetchProjectsForUser (action: FetchProjectsForUserAction) {
     const usecases = new UserUseCases()
     const projects = yield call(usecases.fetchProjectsForUser, userIdOrUsername)
     yield put(setProjectsForUser(projects))
+  }
+  catch (error) {
+    const message = error.response ? error.response.data.message : error.message
+    const errorMessage: Message = { content: message, type: 'error' }
+    yield put(pushMessage(errorMessage))
+  }
+}
+
+export function* fetchLikedProjectsForUser (action: FetchLikedProjectsForUserAction) {
+  try {
+    const { userIdOrUsername } = action.payload
+    const usecases = new UserUseCases()
+    const projects = yield call(usecases.fetchLikedProjectsForUser, userIdOrUsername)
+    yield put(setLikedProjectsForUser(projects))
   }
   catch (error) {
     const message = error.response ? error.response.data.message : error.message

@@ -12,11 +12,12 @@ interface ProfileProps {
   isLoadingUserProfile: boolean
   fetchUserWithUsername: (username: string) => void
   fetchProjectsForUser: (userIdOrUsername: number | string) => void
+  fetchLikedProjectsForUser: (userIdOrUsername: number | string) => void
 }
 
 export const Profile: React.FC<ProfileProps> = props => {
   const { username } = useParams()
-  const { user, fetchUserWithUsername, fetchProjectsForUser, isLoadingUserProfile } = props
+  const { user, fetchUserWithUsername, fetchProjectsForUser, fetchLikedProjectsForUser, isLoadingUserProfile } = props
 
   useEffect(() => {
     if (user && user.username === username) { return }
@@ -26,7 +27,8 @@ export const Profile: React.FC<ProfileProps> = props => {
   useEffect(() => {
     if (!username) { return }
     fetchProjectsForUser(username)
-  }, [fetchProjectsForUser, username])
+    fetchLikedProjectsForUser(username)
+  }, [fetchLikedProjectsForUser, fetchProjectsForUser, username])
 
   return (
     <div className="container pdt-large pdb-large">
@@ -67,6 +69,7 @@ export const Profile: React.FC<ProfileProps> = props => {
                     tab={<span>Liked <span className="color-gray-500 ml-small">{user.likedCount}</span></span>}
                     key="2"
                   >
+                    <ProjectsFeed projects={user.likedProjects ?? []} />
                   </Tabs.TabPane>
 
                   <Tabs.TabPane

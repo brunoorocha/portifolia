@@ -19,4 +19,9 @@ export class UserUseCases {
     const { data } = await ApiService().get(DribbbreApiResources.projectsForUser(userIdOrUsername))
     return data
   }
+
+  fetchLikedProjectsForUser = async (userIdOrUsername: number | string): Promise<Project[]> => {
+    const { data } = await ApiService().get(DribbbreApiResources.likedProjectsForUser(userIdOrUsername))
+    return data
+  }
 }

@@ -18,7 +18,6 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = props => {
-
   return (
     <div className="w-100per d-flex fd-column">
       <div className="p-relative w-100per o-hidden br-small mb-small">
