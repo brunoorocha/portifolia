@@ -4,6 +4,7 @@ import { Row, Col, Avatar } from 'antd'
 import { Project } from '../../domain/entities/Project'
 import { Button } from '../../components'
 import { Heart } from 'react-feather'
+import { ProjectImageContainer } from '../../components/project-image-container/ProjectImageContainer'
 
 interface ProjectDetailsProps {
   project?: Project
@@ -33,16 +34,14 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = props => {
               <p>by <Link to={`/${project.user.username}`}>{ project.user.username }</Link></p>
             </div>
           </Col>
-          <Col>
+          <Col className="d-flex">
             <Button className="mr-smedium">Save</Button>
             <Button>Like</Button>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <img src={project.imageUrl} alt="" className="br-medium w-100per" />
-          </Col>
-        </Row>
+
+        <ProjectImageContainer imageUrl={project.imageUrl} className="br-medium" />
+
         <Row gutter={[40, 40]} className="pdt-lmedium pdb-lmedium">
           <Col xs={24} sm={16} md={16}>
             <p>{ project.description }</p>

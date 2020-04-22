@@ -5,6 +5,7 @@ import { Button } from '../base/Button'
 import { LikeButton } from '../like-button/LikeButton'
 import { Link } from 'react-router-dom'
 import { routes } from '../../pages/routes'
+import { ProjectImageContainer } from '../project-image-container/ProjectImageContainer'
 
 interface ProjectCardProps {
   projectId: number
@@ -21,7 +22,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = props => {
   return (
     <div className="w-100per d-flex fd-column">
       <div className="p-relative w-100per o-hidden br-small mb-small">
-        <img src={props.imageUrl} alt="" className="w-100per" />
+        <ProjectImageContainer imageUrl={props.imageUrl} />
+
         <div className="p-absolute w-100per h-100per bg-black-gradient bs-border-box pd-medium d-flex ai-end show-when-hover" style={{ bottom: '0' }}>
           <Row className="w-100per up-when-show" align="middle">
             <Col flex="auto">
