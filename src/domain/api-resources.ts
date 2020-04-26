@@ -1,6 +1,10 @@
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+console.log(process.env)
 
 export const DribbbreApiResources = {
-  baseURL: 'http://localhost:5000',
+  baseURL: process.env.REACT_APP_API_URL,
 
   auth: '/auth',
   createUser: '/users',
