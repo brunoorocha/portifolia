@@ -51,6 +51,7 @@ export function* createProject (action: CreateProjectAction) {
 
 export function* fetchProjectWithId (action: FetchProjectWithIdAction) {
   try {
+    yield put(setSelectedProject())
     const { projectId } = action.payload
     const projectUseCases = new ProjectUseCases()
     const project = yield call(projectUseCases.fetchProjectWithId, projectId)

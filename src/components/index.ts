@@ -1,6 +1,6 @@
 
 export * from './base/Button'
-export * from './base/DibbbreLogo'
+export * from './base/PortifoliaLogo'
 export * from './banner/Banner'
 export * from './navbar'
 export * from './project-filter/ProjectFilter'

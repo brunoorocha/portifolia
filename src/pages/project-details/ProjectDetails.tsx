@@ -36,7 +36,7 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = props => {
           </Col>
           <Col className="d-flex">
             <Button className="mr-smedium">Save</Button>
-            <Button>Like</Button>
+            <Button><Heart className="f-icon f-icon-smedium mr-small" /> Like</Button>
           </Col>
         </Row>
 

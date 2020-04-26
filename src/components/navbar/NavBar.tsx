@@ -1,8 +1,7 @@
 import React from 'react'
 import { Menu, Layout, Row, Col } from 'antd'
 import { Link } from 'react-router-dom'
-import { ChevronDown } from 'react-feather'
-import { DibbbreLogo } from '../base/DibbbreLogo'
+import { PortifoliaLogo } from '../base/PortifoliaLogo'
 import { LinkButton } from '../base/Button'
 import { routes } from '../../pages/routes'
 import { User } from '../../domain/entities/User'
@@ -21,7 +20,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
       <Row gutter={[20, 0]} align="middle">
         <Col>
           <Link to={routes.home}>
-            <DibbbreLogo size="small" />
+            <PortifoliaLogo size="small" />
           </Link>
         </Col>
         <Col xs={8} sm={16} md={16}>
@@ -29,7 +28,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
             theme="light"
             mode="horizontal"
           >
-            <Item key="1">Explore <ChevronDown className="f-icon f-icon-smedium" /></Item>
+            <Item key="1">Explore</Item>
             <Item key="2">Blog</Item>
           </Menu>
         </Col>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
-import { DibbbreLogo, PrimaryButton } from '../../components'
+import { PortifoliaLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
 import { CreateUserDTO } from '../../domain/dto/create-user-dto'
 import { User } from '../../domain/entities/User'
@@ -36,7 +36,7 @@ export const SignUp: React.FC<SignUpProps> = props => {
       <Col xs={0} sm={0} md={8} className="bg-color-pink-100 h-100vh pdl-lmedium pdr-lmedium d-flex fd-column jc-space-between">
         <div className="pdt-lmedium">
           <Link to="">
-            <DibbbreLogo size="small" />
+            <PortifoliaLogo size="small" />
           </Link>
         </div>
         <div className="d-flex pdb-ularge">

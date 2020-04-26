@@ -1,12 +1,12 @@
 import React from 'react'
 import portifoliaLogo from '../../assets/images/portifolia-logo.png'
 
-interface DibbbreLogoProps {
+interface PortifoliaLogoProps {
   size?: 'small' | 'normal' | 'large'
   style?: React.CSSProperties
 }
 
-export const DibbbreLogo: React.FC<DibbbreLogoProps> = props => {
+export const PortifoliaLogo: React.FC<PortifoliaLogoProps> = props => {
   const size = props.size || 'normal'
 
   const sizesClassNames = {
