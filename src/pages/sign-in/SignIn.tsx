@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
-import { PortifoliaLogo, PrimaryButton } from '../../components'
+import { PortifoliaLogo, PrimaryButton, FacebookSignInButton, GhostButton } from '../../components'
 import { routes } from '../routes'
 import { User } from '../../domain/entities/User'
 import loginIllustration from '../../assets/images/login-illustration.png'
 
 interface SignInProps {
   signIn: (username: string, password: string) => void
+  facebookSignIn: (facebookToken: string) => void
   isLoadingSignIn: boolean
   user?: User
 }
@@ -26,6 +27,11 @@ export const SignIn: React.FC<SignInProps> = props => {
 
   const onFormFinish = () => {
     props.signIn(username, password)
+  }
+
+  const onFacebookSignInResponse = (response: any) => {
+    const facebookToken = response.accessToken ?? ''
+    props.facebookSignIn(facebookToken)
   }
 
   return (
@@ -50,6 +56,22 @@ export const SignIn: React.FC<SignInProps> = props => {
 
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">
           <h3>Sign in to Portifolia</h3>
+          
+          <Row gutter={[20, 20]}>
+            <Col xs={24} sm={12} md={12}>
+              <FacebookSignInButton
+                appId="278645166498446"
+                callback={onFacebookSignInResponse} />
+            </Col>
+            <Col xs={24} sm={12} md={12}>
+              <GhostButton className="w-100per">Sign in with Google</GhostButton>
+            </Col>
+          </Row>
+
+          <Row justify="center">
+            <p>or</p>
+          </Row>
+
           <Form layout="vertical" onFinish={onFormFinish}>
             <Row>
               <Col span={24}>

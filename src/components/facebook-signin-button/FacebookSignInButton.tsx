@@ -1,6 +1,5 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
-import { Facebook } from 'react-feather'
 
 interface FacebookSignInButtonProps {
   appId: string
@@ -15,7 +14,7 @@ export const FacebookSignInButton: React.FC<FacebookSignInButtonProps> = props =
     <FacebookLogin
       fields="id, email, name, photos"
       textButton={textButton}
-      cssClass="h-large d-flex ai-center w-100per jc-center bg-color-facebook color-white br-small b-none fw-500"
+      cssClass="color-white h-slarge bg-color-facebook d-flex ai-center w-100per jc-center br-small b-none fw-500"
       { ...props } />
 
   )
