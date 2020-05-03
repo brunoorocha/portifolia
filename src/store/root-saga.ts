@@ -2,7 +2,7 @@ import { all, takeLatest } from 'redux-saga/effects'
 import { AuthActionTypes } from './auth/types'
 import { UserActionTypes } from './user/types'
 import { ProjectActionTypes } from './project/types'
-import { signIn } from './auth/sagas'
+import { signIn, facebookSignIn } from './auth/sagas'
 import { fetchAllProjects, toggleProjectIsLiked, createProject, fetchProjectWithId } from './project/sagas'
 import { startWatchEventsForUser } from './ws-event-watcher/sagas'
 import { createUser, fetchUserProfile, getAuthenticatedUserProfile, fetchProjectsForUser, fetchLikedProjectsForUser } from './user/sagas'
@@ -10,6 +10,7 @@ import { createUser, fetchUserProfile, getAuthenticatedUserProfile, fetchProject
 export default function* rootSaga () {
   return yield all([
     takeLatest(AuthActionTypes.SIGN_IN_START, signIn),
+    takeLatest(AuthActionTypes.FACEBOOK_SIGN_IN_START, facebookSignIn),
     takeLatest(AuthActionTypes.SET_TOKEN, getAuthenticatedUserProfile),
     
     takeLatest(UserActionTypes.CREATE_USER_START, createUser),

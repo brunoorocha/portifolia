@@ -3,6 +3,8 @@ export const DribbbreApiResources = {
   baseURL: process.env.REACT_APP_API_URL,
 
   auth: '/auth',
+  facebookAuth: '/auth/facebook',
+
   createUser: '/users',
   profile: (userIdOrUsername: number | string) => `/users/${userIdOrUsername}`,
   projectsForUser: (userIdOrUsername: number | string) => `/users/${userIdOrUsername}/projects`,

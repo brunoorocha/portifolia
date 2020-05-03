@@ -7,4 +7,13 @@ export class AuthUseCases {
     const { data } = await ApiService().post(DribbbreApiResources.auth, credentials)
     return data
   }
+  
+  facebookSignIn = async (facebookToken: string): Promise<any> => {
+    const headers = {
+      Authorization: `Bearer ${facebookToken}`
+    }
+
+    const { data } = await ApiService().get(DribbbreApiResources.facebookAuth, { headers })
+    return data
+  }
 }

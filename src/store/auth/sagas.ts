@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects'
-import { SignInStartAction } from './types'
+import { SignInStartAction, FacebookSignInStartAction } from './types'
 import { AuthUseCases } from '../../domain/use-cases/auth-usecases'
-import { signInEnd, setToken } from './actions'
+import { signInEnd, setToken, facebookSignInEnd } from './actions'
 import { Message } from '../../models/Message'
 import { pushMessage } from '../message-center/actions'
 import { tokenKey } from '../../domain/api-service'
@@ -24,5 +24,26 @@ export function* signIn (action: SignInStartAction) {
 
     yield put(pushMessage(errorMessage))
     yield put(signInEnd())
+  }
+}
+
+export function* facebookSignIn (action: FacebookSignInStartAction) {
+  try {
+    const { facebookToken } = action.payload
+    const useCases = new AuthUseCases()
+    const response = yield call(useCases.facebookSignIn, facebookToken)
+    const token = response?.accessToken
+    localStorage.setItem(tokenKey, token)
+
+    yield put(setToken(token))
+    yield put(facebookSignInEnd())
+    yield put(pushMessage({ content: 'You signed in with success', type: 'success' }))
+  }
+  catch (error) {
+    const message = error.response ? error.response.data.message : error.message
+    const errorMessage: Message = { content: message, type: 'error' }
+
+    yield put(pushMessage(errorMessage))
+    yield put(facebookSignInEnd())
   }
 }
