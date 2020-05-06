@@ -7,6 +7,7 @@ import { routes } from '../routes'
 import { CreateUserDTO } from '../../domain/dto/create-user-dto'
 import { User } from '../../domain/entities/User'
 import loginIllustration from '../../assets/images/login-illustration.png'
+import { OrSeparator } from '../../components/or-separator/OrSeparator'
 
 interface SignUpProps {
   isCreateUserLoading: boolean
@@ -71,8 +72,8 @@ export const SignUp: React.FC<SignUpProps> = props => {
             </Col>
           </Row>
 
-          <Row justify="center">
-            <p>or</p>
+          <Row>
+            <OrSeparator />
           </Row>
 
           <Form layout="vertical" onFinish={onFormFinish}>

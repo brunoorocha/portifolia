@@ -14,7 +14,7 @@ export const FacebookSignInButton: React.FC<FacebookSignInButtonProps> = props =
     <FacebookLogin
       fields="id, email, name, photos"
       textButton={textButton}
-      cssClass="color-white h-slarge bg-color-facebook d-flex ai-center w-100per jc-center br-small b-none fw-500"
+      cssClass="color-white h-slarge bg-color-facebook d-flex ai-center w-100per jc-center br-small b-none fw-500 cursor-pointer"
       { ...props } />
 
   )

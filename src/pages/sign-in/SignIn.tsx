@@ -6,6 +6,7 @@ import { PortifoliaLogo, PrimaryButton, FacebookSignInButton, GhostButton } from
 import { routes } from '../routes'
 import { User } from '../../domain/entities/User'
 import loginIllustration from '../../assets/images/login-illustration.png'
+import { OrSeparator } from '../../components/or-separator/OrSeparator'
 
 interface SignInProps {
   signIn: (username: string, password: string) => void
@@ -68,8 +69,8 @@ export const SignIn: React.FC<SignInProps> = props => {
             </Col>
           </Row>
 
-          <Row justify="center">
-            <p>or</p>
+          <Row>
+            <OrSeparator />
           </Row>
 
           <Form layout="vertical" onFinish={onFormFinish}>
