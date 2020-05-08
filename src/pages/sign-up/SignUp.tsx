@@ -8,6 +8,7 @@ import { CreateUserDTO } from '../../domain/dto/create-user-dto'
 import { User } from '../../domain/entities/User'
 import loginIllustration from '../../assets/images/login-illustration.png'
 import { OrSeparator } from '../../components/or-separator/OrSeparator'
+import { GoogleSignInButton } from '../../components/google-signin-button/GoogleSignInButton'
 
 interface SignUpProps {
   isCreateUserLoading: boolean
@@ -65,10 +66,11 @@ export const SignUp: React.FC<SignUpProps> = props => {
             <Col xs={24} sm={12} md={12}>
               <FacebookSignInButton
                 appId="278645166498446"
-                callback={onFacebookSignInResponse} />
+                callback={onFacebookSignInResponse}
+                text="Facebook" />
             </Col>
             <Col xs={24} sm={12} md={12}>
-              <GhostButton className="w-100per">Sign in with Google</GhostButton>
+              <GoogleSignInButton text="Google" />
             </Col>
           </Row>
 
