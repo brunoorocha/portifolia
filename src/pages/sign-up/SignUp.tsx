@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
-import { PortifoliaLogo, PrimaryButton, FacebookSignInButton, GhostButton } from '../../components'
+import { PortifoliaLogo, PrimaryButton, FacebookSignInButton } from '../../components'
 import { routes } from '../routes'
 import { CreateUserDTO } from '../../domain/dto/create-user-dto'
 import { User } from '../../domain/entities/User'
@@ -34,9 +34,14 @@ export const SignUp: React.FC<SignUpProps> = props => {
     props.createUser({ name, username, email, password })
   }
 
-  const onFacebookSignInResponse = (response: any) => {
+  const onFacebookSignInSuccess = (response: any) => {
     const facebookToken = response.accessToken ?? ''
     props.facebookSignIn(facebookToken)
+  }
+
+  const onGoogleSignInSuccess = (response: any) => {
+    const googleToken = response.accessToken
+    debugger
   }
 
   return (
@@ -66,11 +71,14 @@ export const SignUp: React.FC<SignUpProps> = props => {
             <Col xs={24} sm={12} md={12}>
               <FacebookSignInButton
                 appId="278645166498446"
-                callback={onFacebookSignInResponse}
+                onSuccess={onFacebookSignInSuccess}
                 text="Facebook" />
             </Col>
             <Col xs={24} sm={12} md={12}>
-              <GoogleSignInButton text="Google" />
+              <GoogleSignInButton
+                clientId="791072806762-t642r6jru1lr0747pepcjdvbk68rlr1q.apps.googleusercontent.com"
+                onSuccess={onGoogleSignInSuccess}
+                text="Google" />
             </Col>
           </Row>
 
