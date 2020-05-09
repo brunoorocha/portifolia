@@ -13,7 +13,8 @@ import { GoogleSignInButton } from '../../components/google-signin-button/Google
 interface SignUpProps {
   isCreateUserLoading: boolean
   createUser: (createUserDTO: CreateUserDTO) => void
-  facebookSignIn: (facebookToken: string) => void
+  facebookSignIn: (accessToken: string) => void
+  googleSignIn: (accessToken: string) => void
   user?: User
 }
 
@@ -41,7 +42,7 @@ export const SignUp: React.FC<SignUpProps> = props => {
 
   const onGoogleSignInSuccess = (response: any) => {
     const googleToken = response.accessToken
-    debugger
+    props.googleSignIn(googleToken)
   }
 
   return (

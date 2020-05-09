@@ -4,6 +4,7 @@ export const DribbbreApiResources = {
 
   auth: '/auth',
   facebookAuth: '/auth/facebook',
+  googleAuth: (accessToken: string) => `/auth/google?access_token=${accessToken}`,
 
   createUser: '/users',
   profile: (userIdOrUsername: number | string) => `/users/${userIdOrUsername}`,

@@ -5,6 +5,8 @@ export enum AuthActionTypes {
   SIGN_IN_END = '@auth/SIGN_IN_END',
   FACEBOOK_SIGN_IN_START = '@auth/FACEBOOK_SIGN_IN_START',
   FACEBOOK_SIGN_IN_END = '@auth/FACEBOOK_SIGN_IN_END',
+  GOOGLE_SIGN_IN_START = '@auth/GOOGLE_SIGN_IN_START',
+  GOOGLE_SIGN_IN_END = '@auth/GOOGLE_SIGN_IN_END',
   SIGN_OUT = '@auth/SIGN_OUT',
   SET_TOKEN = '@auth/SET_TOKEN'
 }
@@ -19,9 +21,9 @@ export interface SignInStartAction {
   payload: SignInDTO
 }
 
-export interface FacebookSignInStartAction {
-  type: typeof AuthActionTypes.FACEBOOK_SIGN_IN_START
-  payload: { facebookToken: string }
+export interface SocialSignInStartAction {
+  type: typeof AuthActionTypes.FACEBOOK_SIGN_IN_START | typeof AuthActionTypes.GOOGLE_SIGN_IN_START
+  payload: { accessToken: string }
 }
 
 export interface SetTokenAction {

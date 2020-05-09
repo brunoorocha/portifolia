@@ -8,12 +8,17 @@ export class AuthUseCases {
     return data
   }
   
-  facebookSignIn = async (facebookToken: string): Promise<any> => {
+  facebookSignIn = async (accessToken: string): Promise<any> => {
     const headers = {
-      Authorization: `Bearer ${facebookToken}`
+      Authorization: `Bearer ${accessToken}`
     }
 
     const { data } = await ApiService.get(DribbbreApiResources.facebookAuth, { headers })
+    return data
+  }
+  
+  googleSignIn = async (accessToken: string): Promise<any> => {
+    const { data } = await ApiService.get(DribbbreApiResources.googleAuth(accessToken))
     return data
   }
 }

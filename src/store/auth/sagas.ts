@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects'
-import { SignInStartAction, FacebookSignInStartAction } from './types'
+import { SignInStartAction, SocialSignInStartAction } from './types'
 import { AuthUseCases } from '../../domain/use-cases/auth-usecases'
 import { signInEnd, setToken, facebookSignInEnd } from './actions'
 import { Message } from '../../models/Message'
@@ -27,11 +27,33 @@ export function* signIn (action: SignInStartAction) {
   }
 }
 
-export function* facebookSignIn (action: FacebookSignInStartAction) {
+export function* facebookSignIn (action: SocialSignInStartAction) {
   try {
-    const { facebookToken } = action.payload
+    const { accessToken } = action.payload
     const useCases = new AuthUseCases()
-    const response = yield call(useCases.facebookSignIn, facebookToken)
+    const response = yield call(useCases.facebookSignIn, accessToken)
+    const token = response?.accessToken
+    localStorage.setItem(tokenKey, token)
+
+    yield put(setToken(token))
+    yield put(facebookSignInEnd())
+    yield put(pushMessage({ content: 'You signed in with success', type: 'success' }))
+  }
+  catch (error) {
+    const message = error.response ? error.response.data.message : error.message
+    const errorMessage: Message = { content: message, type: 'error' }
+
+    yield put(pushMessage(errorMessage))
+    yield put(facebookSignInEnd())
+  }
+}
+
+export function* googleSignIn (action: SocialSignInStartAction) {
+  try {
+    const { accessToken } = action.payload
+    const useCases = new AuthUseCases()
+    const response = yield call(useCases.googleSignIn, accessToken)
+    debugger
     const token = response?.accessToken
     localStorage.setItem(tokenKey, token)
 

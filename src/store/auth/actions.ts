@@ -5,9 +5,13 @@ export const signIn = (username: string, password: string) => action(AuthActionT
 
 export const signInEnd = () => action(AuthActionTypes.SIGN_IN_END)
 
-export const facebookSignIn = (facebookToken: string) => action(AuthActionTypes.FACEBOOK_SIGN_IN_START, { facebookToken })
+export const facebookSignIn = (accessToken: string) => action(AuthActionTypes.FACEBOOK_SIGN_IN_START, { accessToken })
 
 export const facebookSignInEnd = () => action(AuthActionTypes.FACEBOOK_SIGN_IN_END)
+
+export const googleSignIn = (accessToken: string) => action(AuthActionTypes.GOOGLE_SIGN_IN_START, { accessToken })
+
+export const googleSignInEnd = () => action(AuthActionTypes.GOOGLE_SIGN_IN_END)
 
 export const setToken = (token: string) => action(AuthActionTypes.SET_TOKEN, { token })
 
