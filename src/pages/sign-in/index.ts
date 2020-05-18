@@ -6,6 +6,8 @@ import { SignIn as SignInComponent } from './SignIn'
 
 const mapStateToProps = (state: AppState) => ({
   isLoadingSignIn: state.auth.isLoading,
+  isLoadingFacebookSignIn: state.auth.isLoadingFacebookAuth,
+  isLoadingGoogleSignIn: state.auth.isLoadingGoogleAuth,
   user: state.user.authenticatedUser
 })
 

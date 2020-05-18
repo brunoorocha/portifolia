@@ -3,7 +3,9 @@ import { AuthActionTypes, AuthState } from './types'
 
 const INITIAL_STATE: AuthState = {
   token: undefined,
-  isLoading: false
+  isLoading: false,
+  isLoadingFacebookAuth: false,
+  isLoadingGoogleAuth: false
 }
 
 export const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
@@ -16,6 +18,14 @@ export const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
       return { ...state, token: undefined }
     case AuthActionTypes.SET_TOKEN:
       return { ...state, token: action.payload.token }
+    case AuthActionTypes.FACEBOOK_SIGN_IN_START:
+      return { ...state, isLoadingFacebookAuth: true }
+    case AuthActionTypes.FACEBOOK_SIGN_IN_END:
+      return { ...state, isLoadingFacebookAuth: false }
+    case AuthActionTypes.GOOGLE_SIGN_IN_START:
+      return { ...state, isLoadingGoogleAuth: true }
+    case AuthActionTypes.GOOGLE_SIGN_IN_END:
+      return { ...state, isLoadingGoogleAuth: false }
     default:
       return state
   }

@@ -14,6 +14,8 @@ export enum AuthActionTypes {
 export interface AuthState {
   readonly token?: string
   readonly isLoading: boolean
+  readonly isLoadingFacebookAuth: boolean
+  readonly isLoadingGoogleAuth: boolean
 }
 
 export interface SignInStartAction {

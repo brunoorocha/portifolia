@@ -14,6 +14,8 @@ interface SignInProps {
   facebookSignIn: (accessToken: string) => void
   googleSignIn: (accessToken: string) => void
   isLoadingSignIn: boolean
+  isLoadingFacebookSignIn: boolean
+  isLoadingGoogleSignIn: boolean
   user?: User
 }
 
@@ -38,8 +40,7 @@ export const SignIn: React.FC<SignInProps> = props => {
   }
 
   const onGoogleSignInSuccess = (response: any) => {
-    const googleToken = response.accessToken
-    debugger
+    const googleToken = response.accessToken ?? ''
     props.googleSignIn(googleToken)
   }
 
@@ -71,13 +72,15 @@ export const SignIn: React.FC<SignInProps> = props => {
               <FacebookSignInButton
                 appId="278645166498446"
                 onSuccess={onFacebookSignInResponse}
-                text="Facebook" />
+                text="Facebook"
+                isDisabled={props.isLoadingFacebookSignIn} />
             </Col>
             <Col xs={24} sm={12} md={12}>
               <GoogleSignInButton
                 clientId="791072806762-t642r6jru1lr0747pepcjdvbk68rlr1q.apps.googleusercontent.com"
                 onSuccess={onGoogleSignInSuccess}
-                text="Google" />
+                text="Google"
+                isDisabled={props.isLoadingGoogleSignIn} />
             </Col>
           </Row>
 

@@ -6,6 +6,7 @@ interface FacebookSignInButtonProps {
   appId: string
   text?: string
   onSuccess: (response: any) => void
+  isDisabled?: boolean
 }
 
 export const FacebookSignInButton: React.FC<FacebookSignInButtonProps> = props => {
@@ -15,9 +16,10 @@ export const FacebookSignInButton: React.FC<FacebookSignInButtonProps> = props =
     <FacebookLogin
       fields="id, email, name, photos"
       textButton={textButton}
-      cssClass="color-white h-large bg-color-facebook d-flex ai-center w-100per jc-center br-small b-none fw-500 cursor-pointer"
+      cssClass="facebook-button color-white h-large bg-color-facebook d-flex ai-center w-100per jc-center br-small b-none fw-500 cursor-pointer"
       icon={<FacebookIcon className="mr-smedium" />}
       callback={props.onSuccess}
+      isDisabled={!!props.isDisabled}
       { ...props } />
 
   )
