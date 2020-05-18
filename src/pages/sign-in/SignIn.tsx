@@ -2,20 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
-import { PortifoliaLogo, PrimaryButton, FacebookSignInButton } from '../../components'
+import { PortifoliaLogo, PrimaryButton } from '../../components'
 import { routes } from '../routes'
 import { User } from '../../domain/entities/User'
 import loginIllustration from '../../assets/images/login-illustration.png'
 import { OrSeparator } from '../../components/or-separator/OrSeparator'
-import { GoogleSignInButton } from '../../components/google-signin-button/GoogleSignInButton'
+import { SocialSignIn } from '../../components/social-sign-in/'
 
 interface SignInProps {
   signIn: (username: string, password: string) => void
-  facebookSignIn: (accessToken: string) => void
-  googleSignIn: (accessToken: string) => void
   isLoadingSignIn: boolean
-  isLoadingFacebookSignIn: boolean
-  isLoadingGoogleSignIn: boolean
   user?: User
 }
 
@@ -32,16 +28,6 @@ export const SignIn: React.FC<SignInProps> = props => {
 
   const onFormFinish = () => {
     props.signIn(username, password)
-  }
-
-  const onFacebookSignInResponse = (response: any) => {
-    const facebookToken = response.accessToken ?? ''
-    props.facebookSignIn(facebookToken)
-  }
-
-  const onGoogleSignInSuccess = (response: any) => {
-    const googleToken = response.accessToken ?? ''
-    props.googleSignIn(googleToken)
   }
 
   return (
@@ -67,22 +53,7 @@ export const SignIn: React.FC<SignInProps> = props => {
         <div style={{ maxWidth: '480px', margin: '0 auto' }} className="pdt-ularge pdb-large pdl-medium pdr-medium">
           <h3>Sign in to Portifolia</h3>
           
-          <Row gutter={[20, 20]}>
-          <Col xs={24} sm={12} md={12}>
-              <FacebookSignInButton
-                appId="278645166498446"
-                onSuccess={onFacebookSignInResponse}
-                text="Facebook"
-                isDisabled={props.isLoadingFacebookSignIn} />
-            </Col>
-            <Col xs={24} sm={12} md={12}>
-              <GoogleSignInButton
-                clientId="791072806762-t642r6jru1lr0747pepcjdvbk68rlr1q.apps.googleusercontent.com"
-                onSuccess={onGoogleSignInSuccess}
-                text="Google"
-                isDisabled={props.isLoadingGoogleSignIn} />
-            </Col>
-          </Row>
+          <SocialSignIn />
 
           <Row>
             <OrSeparator />
