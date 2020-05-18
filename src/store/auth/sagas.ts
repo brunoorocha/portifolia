@@ -53,7 +53,6 @@ export function* googleSignIn (action: SocialSignInStartAction) {
     const { accessToken } = action.payload
     const useCases = new AuthUseCases()
     const response = yield call(useCases.googleSignIn, accessToken)
-    debugger
     const token = response?.accessToken
     localStorage.setItem(tokenKey, token)
 

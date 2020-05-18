@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { AppState } from '../../store/app/types'
-import { signIn, facebookSignIn } from '../../store/auth/actions'
+import { signIn, facebookSignIn, googleSignIn } from '../../store/auth/actions'
 import { SignIn as SignInComponent } from './SignIn'
 
 const mapStateToProps = (state: AppState) => ({
@@ -9,6 +9,6 @@ const mapStateToProps = (state: AppState) => ({
   user: state.user.authenticatedUser
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ signIn, facebookSignIn }, dispatch)
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ signIn, facebookSignIn, googleSignIn }, dispatch)
 
 export const SignIn = connect(mapStateToProps, mapDispatchToProps)(SignInComponent)

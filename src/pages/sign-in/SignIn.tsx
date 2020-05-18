@@ -11,7 +11,8 @@ import { GoogleSignInButton } from '../../components/google-signin-button/Google
 
 interface SignInProps {
   signIn: (username: string, password: string) => void
-  facebookSignIn: (facebookToken: string) => void
+  facebookSignIn: (accessToken: string) => void
+  googleSignIn: (accessToken: string) => void
   isLoadingSignIn: boolean
   user?: User
 }
@@ -34,6 +35,12 @@ export const SignIn: React.FC<SignInProps> = props => {
   const onFacebookSignInResponse = (response: any) => {
     const facebookToken = response.accessToken ?? ''
     props.facebookSignIn(facebookToken)
+  }
+
+  const onGoogleSignInSuccess = (response: any) => {
+    const googleToken = response.accessToken
+    debugger
+    props.googleSignIn(googleToken)
   }
 
   return (
@@ -69,7 +76,7 @@ export const SignIn: React.FC<SignInProps> = props => {
             <Col xs={24} sm={12} md={12}>
               <GoogleSignInButton
                 clientId="791072806762-t642r6jru1lr0747pepcjdvbk68rlr1q.apps.googleusercontent.com"
-                onSuccess={() => {}}
+                onSuccess={onGoogleSignInSuccess}
                 text="Google" />
             </Col>
           </Row>
