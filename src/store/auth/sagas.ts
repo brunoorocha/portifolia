@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import { SignInStartAction, SocialSignInStartAction } from './types'
 import { AuthUseCases } from '../../domain/use-cases/auth-usecases'
-import { signInEnd, setToken, facebookSignInEnd } from './actions'
+import { signInEnd, setToken, facebookSignInEnd, googleSignInEnd } from './actions'
 import { Message } from '../../models/Message'
 import { pushMessage } from '../message-center/actions'
 import { tokenKey } from '../../domain/api-service'
@@ -57,7 +57,7 @@ export function* googleSignIn (action: SocialSignInStartAction) {
     localStorage.setItem(tokenKey, token)
 
     yield put(setToken(token))
-    yield put(facebookSignInEnd())
+    yield put(googleSignInEnd())
     yield put(pushMessage({ content: 'You signed in with success', type: 'success' }))
   }
   catch (error) {
@@ -65,6 +65,6 @@ export function* googleSignIn (action: SocialSignInStartAction) {
     const errorMessage: Message = { content: message, type: 'error' }
 
     yield put(pushMessage(errorMessage))
-    yield put(facebookSignInEnd())
+    yield put(googleSignInEnd())
   }
 }
